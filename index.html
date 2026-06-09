@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Рукописный шрифт для заголовков -->
+  <!-- Рукописный шрифт для заголовков и контактов -->
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
 
   <style>
@@ -218,7 +218,7 @@
       opacity: 0.8;
     }
 
-    /* Облако тегов вместо стопки карточек */
+    /* Облако тегов */
     .tag-cloud-section {
       margin: 0 auto 3.2rem;
     }
@@ -261,11 +261,31 @@
         background 0.18s ease,
         border-color 0.18s ease,
         opacity 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* мягкое свечение при наведении[web:98][web:103] */
+    .tag-pill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow:
+        0 0 14px rgba(242,234,233,0.55),
+        0 0 28px rgba(242,234,233,0.35);
+      transition: opacity 0.2s ease;
+    }
+
+    .tag-pill:hover::after {
+      opacity: 1;
     }
 
     .tag-pill:hover {
       transform: translateY(-2px) scale(1.03);
-      background: rgba(139,129,137,0.85);
+      background: rgba(139,129,137,0.9);
       border-color: #F2EAE9;
       box-shadow:
         0 16px 24px -14px rgba(0,0,0,0.9);
@@ -280,6 +300,24 @@
     .tag-pill[data-size="sm"] {
       font-size: 0.75rem;
       opacity: 0.9;
+    }
+
+    /* Адаптивность для облака на мобиле[web:79][web:104] */
+    @media (max-width: 640px) {
+      .tag-cloud {
+        justify-content: flex-start;
+        padding-inline: 0;
+      }
+      .tag-pill {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+      }
+      .tag-pill[data-size="lg"] {
+        font-size: 0.85rem;
+      }
+      .tag-cloud-title {
+        font-size: 1.5rem;
+      }
     }
 
     /* Карточки секций */
@@ -385,20 +423,33 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
+    /* Контакты в рукописном стиле */
     .footer {
       margin-top: 3rem;
-      font-size: 0.82rem;
-      color: #B0A8A7;
       text-align: center;
+      color: #F0EDEE;
     }
 
-    .footer strong {
-      font-weight: 600;
-      color: #E2DADB;
+    .footer-handwritten-main {
+      font-family: "Marck Script", cursive;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-handwritten-sub {
+      font-family: "Marck Script", cursive;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links {
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
     }
 
     .footer a {
-      color: #E2DADB;
+      color: #F2EAE9;
       text-decoration: none;
       border-bottom: 1px solid rgba(226,218,219,0.35);
       padding-bottom: 1px;
@@ -633,21 +684,21 @@
         </p>
 
         <div class="projects-grid">
-          <div class="project-card">
+          <a href="https://github.com/onlymyrep/hr_automation_platform" target="_blank" class="project-card">
             <div class="project-title">HR Automation Platform</div>
             <div class="project-meta">Django · PostgreSQL</div>
             <div class="project-text">
               Платформа для оценки кандидатов, поздравлений и рассылок. Централизация HR‑процессов и истории взаимодействий.
             </div>
-          </div>
+          </a>
 
-          <div class="project-card">
+          <a href="https://github.com/onlymyrep/ai_candidate_reports" target="_blank" class="project-card">
             <div class="project-title">AI‑заключения о кандидатах</div>
             <div class="project-meta">LLM · аналитика</div>
             <div class="project-text">
               Автоматические выводы по резюме, тестам и другим сигналам. Стандартизированные отчёты для HR.
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
@@ -655,7 +706,7 @@
       <section class="section-card" id="web-tools">
         <h2 class="section-title-handwritten">Сервисные веб‑инструменты</h2>
         <p class="section-subtitle">
-          Небольшие утилиты для визуализации графов, генерации расписаний и работы с лабиринтами.
+          Утилиты для визуализации графов, генерации расписаний и работы с лабиринтами.
         </p>
 
         <div class="projects-grid">
@@ -693,21 +744,21 @@
         </p>
 
         <div class="projects-grid">
-          <div class="project-card">
+          <a href="https://github.com/onlymyrep/agar_prototype" target="_blank" class="project-card">
             <div class="project-title">Agar.io‑подобный прототип</div>
             <div class="project-meta">Unity</div>
             <div class="project-text">
               Реализация базовой механики и взаимодействий в духе Agar.io с генерацией части кода через промпт‑инжиниринг.
             </div>
-          </div>
+          </a>
 
-          <div class="project-card">
+          <a href="https://github.com/onlymyrep/tic_tac_toe_swift" target="_blank" class="project-card">
             <div class="project-title">Крестики‑нолики (Swift)</div>
             <div class="project-meta">Swift · Vapor</div>
             <div class="project-text">
               Веб‑игра на Swift (Vapor) с серверной логикой и простым интерфейсом.
             </div>
-          </div>
+          </a>
 
           <a href="https://onlymyrep.github.io/my_game_for_school_21/" target="_blank" class="project-card">
             <div class="project-title">Эмодзи‑пазл</div>
@@ -719,12 +770,15 @@
         </div>
       </section>
 
-      <!-- Контакты -->
+      <!-- Контакты (рукописный стиль) -->
       <footer class="footer">
-        <div>
-          Казань · <strong>DevOps / системный аналитик</strong> · Kubernetes · ELK · Python · Swift
+        <div class="footer-handwritten-main">
+          Связаться со мной
         </div>
-        <div class="mono mt-1">
+        <div class="footer-handwritten-sub">
+          Казань · DevOps / системный аналитик · открытый к интересным задачам
+        </div>
+        <div class="footer-links">
           GitHub:
           <a href="https://github.com/onlymyrep" target="_blank">github.com/onlymyrep</a>
           · Telegram:
@@ -762,18 +816,20 @@
       }
     });
 
-    // Интерактивный терминал с эффектом печати[web:78][web:69]
+    // Интерактивный терминал: более интересный вывод
+    // (немного "диалога" и подсветка стека через echo)[web:78][web:69]
     const terminalBody = document.getElementById("terminalBody");
     const lines = [
+      'hr@portfolio:~$ ssh ilyas@kazan\n',
+      'Connecting to ilyas@kazan...\n',
+      'Connection established.\n\n',
       'hr@portfolio:~$ whoami\n',
       'Ильяс Мукашев — DevOps / системный аналитик.\n\n',
-      'hr@portfolio:~$ echo "Kubernetes, ELK, CI/CD, Python, Swift"\n',
-      'Kubernetes\n',
-      'Docker\n',
-      'GitLab CI\n',
-      'ELK\n',
-      'Python\n',
-      'Swift'
+      'hr@portfolio:~$ cat stack.txt\n',
+      'Kubernetes · Docker · GitLab CI\n',
+      'ELK · Prometheus · Grafana\n',
+      'Python · Swift · Django · PostgreSQL\n\n',
+      'hr@portfolio:~$ # подробнее — ниже на странице'
     ];
 
     let lineIndex = 0;
@@ -818,11 +874,11 @@
 
     tagPills.forEach((pill) => {
       const baseScale = pill.dataset.size === "lg" ? 1.0 : 0.96;
-      const scaleJitter = (Math.random() - 0.5) * 0.08; // от -0.04 до +0.04
+      const scaleJitter = (Math.random() - 0.5) * 0.08; // -0.04 .. +0.04
       const finalScale = baseScale + scaleJitter;
 
       const baseOpacity = pill.dataset.size === "lg" ? 1.0 : 0.9;
-      const opacityJitter = (Math.random() - 0.5) * 0.15; // лёгкое отклонение
+      const opacityJitter = (Math.random() - 0.5) * 0.15;
       const finalOpacity = Math.max(0.7, Math.min(1, baseOpacity + opacityJitter));
 
       pill.style.transform = `scale(${finalScale})`;

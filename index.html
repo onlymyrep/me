@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Рукописный шрифт с поддержкой кириллицы (для "О себе") -->
+  <!-- Рукописный шрифт для заголовков -->
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
 
   <style>
@@ -28,22 +28,43 @@
       padding-top: 2.5rem;
     }
 
-    .page-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+    /* Рукописные заголовки */
+    .handwritten-main {
+      font-family: "Marck Script", cursive;
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
       text-align: center;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
-    .page-subtitle {
-      font-size: 0.95rem;
-      color: #B0A8A7;
+    .handwritten-sub {
+      font-family: "Marck Script", cursive;
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
       text-align: center;
-      margin-bottom: 1.8rem;
+      color: #F2EAE9;
+      opacity: 0.9;
+      margin-bottom: 2rem;
     }
 
-    /* Превью‑экран: терминал + аудио‑плеер + кнопка "Показать портфолио" */
+    .section-title-handwritten {
+      font-family: "Marck Script", cursive;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #F0EDEE;
+      margin-bottom: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Превью‑экран: терминал + плеер + кнопка */
     .intro-screen {
       max-width: 780px;
       margin: 0 auto 3rem;
@@ -96,10 +117,12 @@
       box-shadow:
         inset 2px 2px 4px rgba(0,0,0,0.35),
         inset -2px -2px 3px rgba(255,255,255,0.08);
+      min-height: 180px;
     }
 
     .terminal-line {
       margin-bottom: 0.25rem;
+      white-space: pre-wrap;
     }
 
     .terminal-cursor {
@@ -115,14 +138,6 @@
     @keyframes blink {
       0%,100% { opacity: 1; }
       50%     { opacity: 0; }
-    }
-
-    .terminal-tech-list {
-      margin-top: 0.6rem;
-    }
-
-    .terminal-tech-list-item {
-      margin: 0;
     }
 
     .terminal-footer {
@@ -292,28 +307,6 @@
       background: radial-gradient(circle at 0% 0%, rgba(139,129,137,0.96), rgba(95,82,80,0.92));
     }
 
-    .section-title {
-      font-size: 1.22rem;
-      font-weight: 600;
-      margin-bottom: 0.9rem;
-    }
-
-    /* "О себе" рукописным шрифтом */
-    .section-title-handwritten {
-      font-family: "Marck Script", cursive;
-      font-size: 1.8rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: #F0EDEE;
-      margin-bottom: 1.1rem;
-      opacity: 0.9;
-    }
-
     .stack-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -458,54 +451,36 @@
           </div>
           <div>hr@devops‑portfolio</div>
         </div>
-        <div class="terminal-body">
-          <div class="terminal-line">
-            hr@portfolio:~$ whoami
-          </div>
-          <div class="terminal-line">
-            Ильяс Мукашев — DevOps / системный аналитик.
-          </div>
-          <div class="terminal-line">
-            hr@portfolio:~$ echo "Kubernetes, ELK, CI/CD, Python, Swift"
-          </div>
-          <div class="terminal-tech-list">
-            <p class="terminal-tech-list-item">Kubernetes</p>
-            <p class="terminal-tech-list-item">Docker</p>
-            <p class="terminal-tech-list-item">GitLab CI</p>
-            <p class="terminal-tech-list-item">ELK</p>
-            <p class="terminal-tech-list-item">Python</p>
-            <p class="terminal-tech-list-item">Swift<span class="terminal-cursor"></span></p>
-          </div>
+        <div class="terminal-body" id="terminalBody">
+          <!-- контент терминала напечатается скриптом -->
+        </div>
 
-          <div class="terminal-footer">
-            <!-- Минималистичный плеер -->
-            <div class="audio-player">
-              <button class="audio-button" id="audioToggle" aria-label="Play / Pause">
-                ▶
-              </button>
-              <span class="audio-track-title" id="audioTitle">focus_track.mp3</span>
-              <audio id="introAudio">
-                <!-- позже подставишь путь к треку -->
-                <source src="audio/track1.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-
-            <!-- Кнопка показа портфолио -->
-            <button class="show-portfolio-btn" id="showPortfolioBtn">
-              <span>hr@portfolio:~$</span>
-              <span>show_portfolio</span>
+        <div class="terminal-footer">
+          <!-- Минималистичный плеер -->
+          <div class="audio-player">
+            <button class="audio-button" id="audioToggle" aria-label="Play / Pause">
+              ▶
             </button>
+            <span class="audio-track-title" id="audioTitle">focus_track.mp3</span>
+            <audio id="introAudio">
+              <!-- позже подставишь путь к треку -->
+              <source src="audio/track1.mp3" type="audio/mpeg">
+            </audio>
           </div>
+
+          <!-- Кнопка показа портфолио -->
+          <button class="show-portfolio-btn" id="showPortfolioBtn">
+            <span>hr@portfolio:~$</span>
+            <span>show_portfolio</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Заголовок страницы (появляется вместе с остальным контентом) -->
+    <!-- Шапка (рукописная) -->
     <header class="mb-8 portfolio-content" id="headerContent">
-      <h1 class="page-title">ИЛЬЯС МУКАШЕВ</h1>
-      <p class="page-subtitle">
-        DevOps / системный аналитик · Kubernetes · ELK · CI/CD · Python · Swift
-      </p>
+      <div class="handwritten-main">ИЛЬЯС МУКАШЕВ</div>
+      <div class="handwritten-sub">DevOps / системный аналитик</div>
     </header>
 
     <div class="portfolio-content" id="portfolioContent">
@@ -573,7 +548,7 @@
 
       <!-- Опыт -->
       <section class="section-card" id="experience">
-        <h2 class="section-title">Опыт</h2>
+        <h2 class="section-title-handwritten">Опыт</h2>
 
         <div class="mb-4 small">
           <div class="font-semibold">DevOps / системный аналитик · Freelance</div>
@@ -599,7 +574,7 @@
 
       <!-- ELK / наблюдаемость -->
       <section class="section-card" id="elk">
-        <h2 class="section-title">ELK и наблюдаемость</h2>
+        <h2 class="section-title-handwritten">ELK и наблюдаемость</h2>
         <p class="section-subtitle">
           Развёрнут отказоустойчивый кластер ELK с несколькими Logstash‑узлами, Elasticsearch‑узлами разных ролей и отдельным сервером Kibana.
         </p>
@@ -637,7 +612,7 @@
 
       <!-- DevOps и CI/CD -->
       <section class="section-card" id="devops">
-        <h2 class="section-title">DevOps и CI/CD</h2>
+        <h2 class="section-title-handwritten">DevOps и CI/CD</h2>
         <p class="section-subtitle">
           Автоматизация сборки, тестирования и развёртывания, инфраструктура как код, мониторинг и логирование.
         </p>
@@ -663,7 +638,7 @@
 
       <!-- HR & AI -->
       <section class="section-card" id="hr-ai">
-        <h2 class="section-title">HR‑инструменты и AI</h2>
+        <h2 class="section-title-handwritten">HR‑инструменты и AI</h2>
         <p class="section-subtitle">
           Автоматизация HR‑процессов, аналитика и выводы по кандидатам, интерфейсы для рекрутеров.
         </p>
@@ -689,7 +664,7 @@
 
       <!-- Веб‑инструменты -->
       <section class="section-card" id="web-tools">
-        <h2 class="section-title">Сервисные веб‑инструменты</h2>
+        <h2 class="section-title-handwritten">Сервисные веб‑инструменты</h2>
         <p class="section-subtitle">
           Небольшие утилиты для визуализации графов, генерации расписаний и работы с лабиринтами.
         </p>
@@ -723,7 +698,7 @@
 
       <!-- GameDev -->
       <section class="section-card" id="gamedev">
-        <h2 class="section-title">Игровые прототипы</h2>
+        <h2 class="section-title-handwritten">Игровые прототипы</h2>
         <p class="section-subtitle">
           Учебные и экспериментальные проекты на Unity, Swift и Java с упором на механику и сетевое взаимодействие.
         </p>
@@ -781,7 +756,6 @@
     showBtn.addEventListener("click", () => {
       portfolioContent.classList.add("visible");
       headerContent.classList.add("visible");
-      // Скроллим к шапке, чтобы показать переход
       headerContent.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
@@ -798,6 +772,58 @@
         audioToggle.textContent = "▶";
       }
     });
+
+    // Интерактивный терминал с эффектом печати (много строк)[web:78][web:69]
+    const terminalBody = document.getElementById("terminalBody");
+    const lines = [
+      'hr@portfolio:~$ whoami\n',
+      'Ильяс Мукашев — DevOps / системный аналитик.\n\n',
+      'hr@portfolio:~$ echo "Kubernetes, ELK, CI/CD, Python, Swift"\n',
+      'Kubernetes\n',
+      'Docker\n',
+      'GitLab CI\n',
+      'ELK\n',
+      'Python\n',
+      'Swift'
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let typingFinished = false;
+
+    function typeNextChar() {
+      if (lineIndex >= lines.length) {
+        if (!typingFinished) {
+          const cursor = document.createElement("span");
+          cursor.className = "terminal-cursor";
+          terminalBody.appendChild(cursor);
+          typingFinished = true;
+        }
+        return;
+      }
+
+      const currentLine = lines[lineIndex];
+      const ch = currentLine.charAt(charIndex);
+
+      if (ch === "\n") {
+        terminalBody.innerHTML += "<br>";
+      } else {
+        terminalBody.innerHTML += ch;
+      }
+
+      charIndex++;
+
+      if (charIndex >= currentLine.length) {
+        charIndex = 0;
+        lineIndex++;
+      }
+
+      const speed = 25; // скорость печати
+      setTimeout(typeNextChar, speed);
+    }
+
+    // стартуем печать при загрузке
+    window.addEventListener("load", typeNextChar);
   </script>
 </body>
 </html>

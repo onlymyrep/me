@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Ильяс Мукашев | DevOps & Системный аналитик</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Tailwind CDN (по желанию можно заменить на свой билд) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
+    /* Базовые стили в золотисто‑коричневой палитре */
     body {
-      background: radial-gradient(circle at 10% 20%, #111827, #020617);
-      font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #e5e7eb;
+      background: radial-gradient(circle at 10% 20%, #72676F, #2a1f1d);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       min-height: 100vh;
+      color: #F0EDEE;
       padding: 1.5rem;
     }
 
     .page-container {
-      max-width: 1040px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .page-title {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
 
     .page-subtitle {
       font-size: 0.9rem;
-      color: #9ca3af;
+      color: #B0A8A7;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
     }
 
-    /* Стопка карточек */
+    /* Стопка карточек направлений (аналог subject-card) */
     .card-stack {
       position: relative;
       display: flex;
@@ -58,23 +56,21 @@
       }
       .direction-card {
         width: 260px;
-        padding: 1.2rem 0.9rem;
+        padding: 1.4rem 0.8rem;
       }
     }
 
     .direction-card {
       position: absolute;
       width: 280px;
-      background: radial-gradient(circle at 0% 0%, #18181b, #020617);
+      background: rgba(114,103,111,0.75);
       backdrop-filter: blur(12px);
-      border-radius: 1.25rem;
-      padding: 1.35rem 1rem;
+      border-radius: 1.7rem;
+      padding: 1.55rem 1rem;
       text-align: left;
-      transition: all 0.22s ease-out;
-      box-shadow:
-        0 18px 35px -18px rgba(0, 0, 0, 0.85),
-        0 0 0 1px rgba(148, 163, 184, 0.18);
-      border: 1px solid rgba(148, 163, 184, 0.55);
+      transition: all 0.25s;
+      box-shadow: 0 25px 40px -18px rgba(0,0,0,0.6);
+      border: 1px solid rgba(176,168,167,0.75);
       cursor: pointer;
       transform-origin: center bottom;
       left: 50%;
@@ -84,19 +80,17 @@
     }
 
     .direction-card:nth-child(1) { top: 0px;   z-index: 8; transform: translateX(-50%) rotate(0deg); }
-    .direction-card:nth-child(2) { top: 24px;  z-index: 7; transform: translateX(-50%) rotate(-0.4deg); }
-    .direction-card:nth-child(3) { top: 48px;  z-index: 6; transform: translateX(-50%) rotate(0.3deg); }
-    .direction-card:nth-child(4) { top: 72px;  z-index: 5; transform: translateX(-50%) rotate(-0.2deg); }
-    .direction-card:nth-child(5) { top: 96px;  z-index: 4; transform: translateX(-50%) rotate(0.3deg); }
+    .direction-card:nth-child(2) { top: 24px;  z-index: 7; transform: translateX(-50%) rotate(-0.6deg); }
+    .direction-card:nth-child(3) { top: 48px;  z-index: 6; transform: translateX(-50%) rotate(0.5deg); }
+    .direction-card:nth-child(4) { top: 72px;  z-index: 5; transform: translateX(-50%) rotate(-0.3deg); }
+    .direction-card:nth-child(5) { top: 96px;  z-index: 4; transform: translateX(-50%) rotate(0.4deg); }
 
     .direction-card:hover {
-      transform: translateX(-50%) translateY(-20px) scale(1.03);
-      z-index: 30;
-      border-color: #f9fafb;
-      box-shadow:
-        0 24px 40px -22px rgba(0, 0, 0, 0.95),
-        0 0 0 1px rgba(249, 250, 251, 0.35);
-      background: radial-gradient(circle at 0% 0%, #18181b, #020617);
+      transform: translateX(-50%) translateY(-22px) scale(1.04);
+      z-index: 25;
+      border-color: #E2DADB;
+      background: rgba(129,119,127,0.96);
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.75);
     }
 
     .direction-title {
@@ -107,16 +101,16 @@
 
     .direction-meta {
       font-size: 0.78rem;
-      color: #9ca3af;
-      text-transform: none;
-      letter-spacing: 0.02em;
+      color: #D8CFD0;
+      letter-spacing: 0.03em;
     }
 
-    /* Общий блок (о себе, опыт, проекты) */
-    .section {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 1.5rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
+    /* Стеклянные блоки */
+    .glass-panel {
+      background: rgba(114,103,111,0.45);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(176,168,167,0.5);
+      border-radius: 1.8rem;
       padding: 1.6rem 1.4rem;
       margin-bottom: 1.75rem;
     }
@@ -124,19 +118,20 @@
     .section-title {
       font-size: 1.1rem;
       font-weight: 600;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
     }
 
     .section-subtitle {
       font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 0.75rem;
+      color: #D0C6C5;
+      margin-bottom: 0.7rem;
     }
 
     .stack-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 0.6rem;
+      font-size: 0.86rem;
     }
 
     @media (min-width: 768px) {
@@ -145,22 +140,21 @@
       }
     }
 
-    .tech-item {
-      font-size: 0.82rem;
-      color: #e5e7eb;
-    }
-
-    .tech-label {
+    .tech-item-label {
       display: inline-block;
       min-width: 120px;
-      color: #9ca3af;
+      color: #D0C6C5;
+    }
+
+    .tech-item {
+      color: #F0EDEE;
     }
 
     .projects-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 0.85rem;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
     }
 
     @media (min-width: 768px) {
@@ -170,19 +164,23 @@
     }
 
     .project-card {
-      border-radius: 1rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.98);
-      padding: 0.85rem 0.9rem;
-      transition: background 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+      background: rgba(114,103,111,0.55);
+      backdrop-filter: blur(8px);
+      border-radius: 1.4rem;
+      border-left: 4px solid #B79D9B;
+      border-right: 1px solid rgba(176,168,167,0.45);
+      border-top: 1px solid rgba(176,168,167,0.45);
+      border-bottom: 1px solid rgba(176,168,167,0.45);
+      padding: 0.9rem 0.9rem 0.8rem;
+      transition: 0.2s;
       text-decoration: none;
       color: inherit;
     }
 
     .project-card:hover {
-      background: rgba(15, 23, 42, 1);
-      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(129,119,127,0.7);
       transform: translateY(-2px);
+      box-shadow: 0 18px 26px -16px rgba(0,0,0,0.7);
     }
 
     .project-title {
@@ -191,18 +189,18 @@
     }
 
     .project-meta {
-      font-size: 0.75rem;
-      color: #9ca3af;
+      font-size: 0.78rem;
+      color: #D0C6C5;
       margin-bottom: 0.3rem;
     }
 
     .project-text {
-      font-size: 0.82rem;
-      color: #e5e7eb;
+      font-size: 0.85rem;
+      color: #F0EDEE;
     }
 
     .small {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
     }
 
     .mono {
@@ -210,91 +208,97 @@
     }
 
     .footer {
-      margin-top: 2.25rem;
+      margin-top: 2.5rem;
       font-size: 0.8rem;
-      color: #6b7280;
+      color: #B0A8A7;
       text-align: center;
+    }
+
+    .footer strong {
+      font-weight: 600;
+      color: #E2DADB;
     }
   </style>
 </head>
 <body>
   <div class="page-container">
 
-    <!-- HERO / шапка -->
+    <!-- Шапка -->
     <header class="mb-6">
-      <h1 class="page-title">Ильяс Мукашев</h1>
+      <h1 class="page-title">ИЛЬЯС МУКАШЕВ</h1>
       <p class="page-subtitle">
         DevOps / системный аналитик · Kubernetes · ELK · CI/CD · Python · Swift
       </p>
     </header>
 
-    <!-- Стопка карточек с направлениями -->
+    <!-- Стопка карточек направлений -->
     <section class="mb-6">
       <div class="card-stack">
         <a href="#elk" class="direction-card">
           <div class="direction-title">ELK и наблюдаемость</div>
-          <div class="direction-meta">Filebeat → Logstash → Elasticsearch → Kibana</div>
+          <div class="direction-meta">Filebeat · Logstash · Elasticsearch · Kibana</div>
         </a>
 
         <a href="#devops" class="direction-card">
           <div class="direction-title">DevOps и CI/CD</div>
-          <div class="direction-meta">GitLab CI, Kubernetes, Docker, автоматизация</div>
+          <div class="direction-meta">GitLab CI · Kubernetes · Docker</div>
         </a>
 
         <a href="#hr-ai" class="direction-card">
           <div class="direction-title">HR‑инструменты и AI</div>
-          <div class="direction-meta">Django, LLM, аналитика резюме и кандидатов</div>
+          <div class="direction-meta">Django · LLM · аналитика кандидатов</div>
         </a>
 
         <a href="#web-tools" class="direction-card">
           <div class="direction-title">Сервисные веб‑инструменты</div>
-          <div class="direction-meta">Графы, расписания, генерация лабиринтов</div>
+          <div class="direction-meta">Графы · расписания · лабиринты</div>
         </a>
 
         <a href="#gamedev" class="direction-card">
           <div class="direction-title">Игровые прототипы</div>
-          <div class="direction-meta">Unity, Swift, Java, веб‑игры</div>
+          <div class="direction-meta">Unity · Swift · Java · веб‑игры</div>
         </a>
       </div>
     </section>
 
     <!-- О себе + стек -->
-    <section class="section" id="about">
+    <section class="glass-panel" id="about">
       <h2 class="section-title">О себе</h2>
       <p class="section-subtitle">
         DevOps‑инженер и системный аналитик. Настраиваю CI/CD, Kubernetes, логирование и мониторинг вокруг приложений. Работаю с Python, Swift, Java, Bash.
       </p>
+
       <div class="stack-grid">
         <div class="tech-item">
-          <span class="tech-label">Инфраструктура</span>
+          <span class="tech-item-label">Инфраструктура</span>
           Kubernetes, Docker, Nginx
         </div>
         <div class="tech-item">
-          <span class="tech-label">Логи и метрики</span>
+          <span class="tech-item-label">Логи и метрики</span>
           Elasticsearch, Logstash, Kibana, Filebeat, Prometheus, Grafana
         </div>
         <div class="tech-item">
-          <span class="tech-label">CI/CD</span>
+          <span class="tech-item-label">CI/CD</span>
           GitLab CI, GitHub Actions
         </div>
         <div class="tech-item">
-          <span class="tech-label">Языки</span>
+          <span class="tech-item-label">Языки</span>
           Python, Swift, Java, C, Bash
         </div>
         <div class="tech-item">
-          <span class="tech-label">Базы и веб</span>
+          <span class="tech-item-label">Базы и веб</span>
           PostgreSQL, HTML, CSS, JavaScript
         </div>
       </div>
     </section>
 
     <!-- Опыт -->
-    <section class="section" id="experience">
+    <section class="glass-panel" id="experience">
       <h2 class="section-title">Опыт</h2>
 
       <div class="mb-4 small">
         <div class="font-semibold">DevOps / системный аналитик · Freelance</div>
-        <div class="text-gray-400">2021 – н.в.</div>
+        <div class="text-[#D0C6C5]">2021 – н.в.</div>
         <ul class="list-disc pl-5 mt-1 space-y-0.5">
           <li>CI/CD для Java: деплой 4 часа → 15 минут.</li>
           <li>Миграция на Kubernetes, GitOps, Helm.</li>
@@ -305,7 +309,7 @@
 
       <div class="small">
         <div class="font-semibold">iOS и Python разработчик · Фриланс</div>
-        <div class="text-gray-400">2024 – н.в.</div>
+        <div class="text-[#D0C6C5]">2024 – н.в.</div>
         <ul class="list-disc pl-5 mt-1 space-y-0.5">
           <li>Swift (MVVM, SwiftUI, CoreData), Python.</li>
           <li>HR‑автоматизация: оценка, рассылки, поздравления.</li>
@@ -315,7 +319,7 @@
     </section>
 
     <!-- ELK / наблюдаемость -->
-    <section class="section" id="elk">
+    <section class="glass-panel" id="elk">
       <h2 class="section-title">ELK и наблюдаемость</h2>
       <p class="section-subtitle">
         Развёрнут отказоустойчивый кластер ELK с несколькими Logstash‑узлами, Elasticsearch‑узлами разных ролей и отдельным сервером Kibana.
@@ -326,33 +330,34 @@
         <ol class="list-decimal pl-5 space-y-0.5">
           <li>Событие появляется в лог‑файле на сервере‑источнике.</li>
           <li>Filebeat читает новую строку и добавляет служебные поля.</li>
-          <li>Событие уходит в Logstash по Beats‑протоколу.</li>
+          <li>Событие отправляется в Logstash по Beats‑протоколу.</li>
           <li>Logstash разбирает строку фильтрами и нормализует поля.</li>
           <li>Событие индексируется в Elasticsearch.</li>
           <li>Kibana делает запрос к Elasticsearch и показывает результат пользователю.</li>
         </ol>
       </div>
 
-      <div class="small mb-4 grid md:grid-cols-2 gap-3">
+      <div class="small grid md:grid-cols-2 gap-3">
         <div>
-          <div class="font-semibold mb-1">Роли компонентов</div>
+          <div class="font-semibold mb-1">Сбор и обработка</div>
           <ul class="list-disc pl-5 space-y-0.5">
-            <li>Filebeat — сбор логов, теги, хосты, типы, буферизация при сбоях сети.</li>
-            <li>Logstash — парсинг, обогащение, единый формат событий.</li>
+            <li>Filebeat собирает логи с заданных путей, помечает их тегами, хостами и типами.</li>
+            <li>Буферизация данных при кратковременных сбоях сети.</li>
+            <li>Logstash выполняет парсинг и обогащение, приводит события к единому формату.</li>
           </ul>
         </div>
         <div>
-          <div class="font-semibold mb-1">Хранилище и визуализация</div>
+          <div class="font-semibold mb-1">Хранение и визуализация</div>
           <ul class="list-disc pl-5 space-y-0.5">
-            <li>Elasticsearch — шардирование, реплики, быстрый поиск и аналитика.</li>
-            <li>Kibana — дашборды, сохранённые поиски, визуализации.</li>
+            <li>Elasticsearch распределяет документы по шардам и репликам, обеспечивает быстрый поиск и аналитические запросы.</li>
+            <li>Kibana даёт интерфейс для дашбордов, сохранённых поисков и визуализаций по индексам с логами.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- DevOps и CI/CD -->
-    <section class="section" id="devops">
+    <section class="glass-panel" id="devops">
       <h2 class="section-title">DevOps и CI/CD</h2>
       <p class="section-subtitle">
         Автоматизация сборки, тестирования и развёртывания, инфраструктура как код, мониторинг и логирование.
@@ -363,7 +368,7 @@
           <div class="project-title">CI/CD для C‑проекта</div>
           <div class="project-meta">GitLab CI · Docker</div>
           <div class="project-text">
-            Конвейер сборки, тестов и статического анализа. От ручных сборок к повторяемому пайплайну.
+            Конвейер сборки, тестов и статического анализа. Переход от ручных сборок к повторяемому пайплайну.
           </div>
         </a>
 
@@ -378,7 +383,7 @@
     </section>
 
     <!-- HR & AI -->
-    <section class="section" id="hr-ai">
+    <section class="glass-panel" id="hr-ai">
       <h2 class="section-title">HR‑инструменты и AI</h2>
       <p class="section-subtitle">
         Автоматизация HR‑процессов, аналитика и выводы по кандидатам, интерфейсы для рекрутеров.
@@ -404,7 +409,7 @@
     </section>
 
     <!-- Веб‑инструменты -->
-    <section class="section" id="web-tools">
+    <section class="glass-panel" id="web-tools">
       <h2 class="section-title">Сервисные веб‑инструменты</h2>
       <p class="section-subtitle">
         Небольшие утилиты для визуализации графов, генерации расписаний и работы с лабиринтами.
@@ -438,7 +443,7 @@
     </section>
 
     <!-- GameDev -->
-    <section class="section" id="gamedev">
+    <section class="glass-panel" id="gamedev">
       <h2 class="section-title">Игровые прототипы</h2>
       <p class="section-subtitle">
         Учебные и экспериментальные проекты на Unity, Swift и Java с упором на механику и сетевое взаимодействие.
@@ -473,9 +478,12 @@
 
     <!-- Контакты -->
     <footer class="footer">
-      Казань · DevOps / системный аналитик · Kubernetes · ELK · Python · Swift
-      <br />
-      <span class="mono">GitHub: github.com/onlymyrep · Telegram: @bartonjo · Email: mukashevilias@gmail.com</span>
+      <div>
+        Казань · <strong>DevOps / системный аналитик</strong> · Kubernetes · ELK · Python · Swift
+      </div>
+      <div class="mono mt-1">
+        GitHub: github.com/onlymyrep · Telegram: @bartonjo · Email: mukashevilias@gmail.com
+      </div>
     </footer>
   </div>
 </body>

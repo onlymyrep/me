@@ -218,74 +218,68 @@
       opacity: 0.8;
     }
 
-    /* Стопка карточек направлений */
-    .card-stack {
-      position: relative;
+    /* Облако тегов вместо стопки карточек */
+    .tag-cloud-section {
+      margin: 0 auto 3.2rem;
+    }
+
+    .tag-cloud-title {
+      font-family: "Marck Script", cursive;
+      font-size: 1.7rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag-cloud {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 0.6rem 0.55rem;
+      padding: 1rem 0.3rem;
+    }
+
+    .tag-pill {
+      display: inline-flex;
       align-items: center;
-      margin: 0 auto 4rem;
-      width: 100%;
-      max-width: 100%;
-      height: 560px;
-    }
-
-    @media (max-width: 640px) {
-      .card-stack {
-        height: auto;
-        min-height: 560px;
-        margin-bottom: 3rem;
-        transform: scale(0.96);
-      }
-      .direction-card {
-        width: 280px;
-        padding: 1.5rem 1rem;
-      }
-    }
-
-    .direction-card {
-      position: absolute;
-      width: 320px;
-      background: rgba(114,103,111,0.78);
-      backdrop-filter: blur(14px);
-      border-radius: 2.1rem;
-      padding: 1.7rem 1.2rem;
-      text-align: left;
-      transition: all 0.25s;
-      box-shadow: 0 30px 56px -20px rgba(0,0,0,0.7);
-      border: 1px solid rgba(176,168,167,0.8);
-      cursor: pointer;
-      transform-origin: center bottom;
-      left: 50%;
-      transform: translateX(-50%);
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .direction-card:nth-child(1) { top: 0px;    z-index: 8; transform: translateX(-50%) rotate(0deg); }
-    .direction-card:nth-child(2) { top: 44px;   z-index: 7; transform: translateX(-50%) rotate(-0.6deg); }
-    .direction-card:nth-child(3) { top: 88px;   z-index: 6; transform: translateX(-50%) rotate(0.5deg); }
-    .direction-card:nth-child(4) { top: 132px;  z-index: 5; transform: translateX(-50%) rotate(-0.3deg); }
-    .direction-card:nth-child(5) { top: 176px;  z-index: 4; transform: translateX(-50%) rotate(0.4deg); }
-
-    .direction-card:hover {
-      transform: translateX(-50%) translateY(-28px) scale(1.05);
-      z-index: 30;
-      border-color: #E2DADB;
-      background: rgba(129,119,127,0.98);
-      box-shadow: 0 40px 64px -24px rgba(0,0,0,0.85);
-    }
-
-    .direction-title {
-      font-size: 1.06rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .direction-meta {
+      justify-content: center;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
       font-size: 0.8rem;
-      color: #D8CFD0;
-      letter-spacing: 0.03em;
+      color: #F8F3F2;
+      text-decoration: none;
+      background: rgba(114,103,111,0.55);
+      border: 1px solid rgba(226,218,219,0.7);
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 10px 18px -12px rgba(0,0,0,0.8),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        opacity 0.18s ease;
+    }
+
+    .tag-pill:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(139,129,137,0.85);
+      border-color: #F2EAE9;
+      box-shadow:
+        0 16px 24px -14px rgba(0,0,0,0.9);
+      opacity: 1;
+    }
+
+    .tag-pill[data-size="lg"] {
+      font-size: 0.9rem;
+      padding: 0.45rem 1.1rem;
+    }
+
+    .tag-pill[data-size="sm"] {
+      font-size: 0.75rem;
+      opacity: 0.9;
     }
 
     /* Карточки секций */
@@ -485,33 +479,28 @@
 
     <div class="portfolio-content" id="portfolioContent">
 
-      <!-- Стопка карточек направлений -->
-      <section class="mb-8">
-        <div class="card-stack">
-          <a href="#elk" class="direction-card">
-            <div class="direction-title">ELK и наблюдаемость</div>
-            <div class="direction-meta">Filebeat · Logstash · Elasticsearch · Kibana</div>
-          </a>
+      <!-- Облако тегов по направлениям и стеку -->
+      <section class="tag-cloud-section">
+        <div class="tag-cloud-title">Направления и стек</div>
+        <div class="tag-cloud" id="tagCloud">
+          <a href="#elk" class="tag-pill" data-size="lg">ELK / наблюдаемость</a>
+          <a href="#devops" class="tag-pill" data-size="lg">DevOps · CI/CD</a>
+          <a href="#hr-ai" class="tag-pill" data-size="lg">HR‑инструменты · AI</a>
+          <a href="#web-tools" class="tag-pill" data-size="lg">Сервисные веб‑инструменты</a>
+          <a href="#gamedev" class="tag-pill" data-size="lg">Игровые прототипы</a>
 
-          <a href="#devops" class="direction-card">
-            <div class="direction-title">DevOps и CI/CD</div>
-            <div class="direction-meta">GitLab CI · Kubernetes · Docker</div>
-          </a>
-
-          <a href="#hr-ai" class="direction-card">
-            <div class="direction-title">HR‑инструменты и AI</div>
-            <div class="direction-meta">Django · LLM · аналитика кандидатов</div>
-          </a>
-
-          <a href="#web-tools" class="direction-card">
-            <div class="direction-title">Сервисные веб‑инструменты</div>
-            <div class="direction-meta">Графы · расписания · лабиринты</div>
-          </a>
-
-          <a href="#gamedev" class="direction-card">
-            <div class="direction-title">Игровые прототипы</div>
-            <div class="direction-meta">Unity · Swift · Java · веб‑игры</div>
-          </a>
+          <span class="tag-pill" data-size="sm">Kubernetes</span>
+          <span class="tag-pill" data-size="sm">Docker</span>
+          <span class="tag-pill" data-size="sm">GitLab CI</span>
+          <span class="tag-pill" data-size="sm">ELK</span>
+          <span class="tag-pill" data-size="sm">Prometheus</span>
+          <span class="tag-pill" data-size="sm">Grafana</span>
+          <span class="tag-pill" data-size="sm">Python</span>
+          <span class="tag-pill" data-size="sm">Swift</span>
+          <span class="tag-pill" data-size="sm">Django</span>
+          <span class="tag-pill" data-size="sm">PostgreSQL</span>
+          <span class="tag-pill" data-size="sm">Unity</span>
+          <span class="tag-pill" data-size="sm">Vapor</span>
         </div>
       </section>
 
@@ -773,7 +762,7 @@
       }
     });
 
-    // Интерактивный терминал с эффектом печати (много строк)[web:78][web:69]
+    // Интерактивный терминал с эффектом печати[web:78][web:69]
     const terminalBody = document.getElementById("terminalBody");
     const lines = [
       'hr@portfolio:~$ whoami\n',
@@ -818,12 +807,27 @@
         lineIndex++;
       }
 
-      const speed = 25; // скорость печати
+      const speed = 25;
       setTimeout(typeNextChar, speed);
     }
 
-    // стартуем печать при загрузке
     window.addEventListener("load", typeNextChar);
+
+    // Лёгкий рандом размеров/прозрачности тегов[web:85][web:87]
+    const tagPills = document.querySelectorAll(".tag-pill");
+
+    tagPills.forEach((pill) => {
+      const baseScale = pill.dataset.size === "lg" ? 1.0 : 0.96;
+      const scaleJitter = (Math.random() - 0.5) * 0.08; // от -0.04 до +0.04
+      const finalScale = baseScale + scaleJitter;
+
+      const baseOpacity = pill.dataset.size === "lg" ? 1.0 : 0.9;
+      const opacityJitter = (Math.random() - 0.5) * 0.15; // лёгкое отклонение
+      const finalOpacity = Math.max(0.7, Math.min(1, baseOpacity + opacityJitter));
+
+      pill.style.transform = `scale(${finalScale})`;
+      pill.style.opacity = finalOpacity.toString();
+    });
   </script>
 </body>
 </html>

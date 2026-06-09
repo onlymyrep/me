@@ -3,28 +3,55 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- Базовый SEO‑набор[web:106][web:107][web:111] -->
-  <title>Ильяс Мухашев — DevOps и системный аналитик (Kubernetes, ELK, CI/CD, Python)</title>
-  <meta name="description" content="Портфолио Ильяса Мухашева, DevOps-инженера и системного аналитика из Казани. Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты и игровые прототипы.">
-  <meta name="keywords" content="Ильяс Мухашев, DevOps, системный аналитик, Kubernetes, ELK, CI/CD, GitLab CI, Docker, Prometheus, Grafana, Python, Swift, Django, HR автоматизация, портфолио">
-  <meta name="author" content="Ильяс Мухашев">
+  <!-- Расширенный SEO‑набор[web:106][web:108][web:111] -->
+  <title>Ильяс — DevOps и системный аналитик (Kubernetes, ELK, CI/CD, Python)</title>
+  <meta name="description" content="Портфолио Ильяса, DevOps-инженера и системного аналитика из Казани: Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты и игровые прототипы.">
+  <meta name="keywords" content="Ильяс, DevOps, системный аналитик, Kubernetes, ELK, CI/CD, GitLab CI, Docker, Prometheus, Grafana, Python, Swift, Django, HR автоматизация, портфолио">
+  <meta name="author" content="Ильяс">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="index,follow">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Ильяс Мухашев — DevOps и системный аналитик">
-  <meta property="og:description" content="Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты, игровые прототипы. Лаконичное портфолио с техническими деталями.">
-  <meta property="og:locale" content="ru_RU">
+  <meta name="theme-color" content="#2a1f1d">
 
-  <!-- Если будет свой домен и превью-картинка, добавь:
+  <!-- Open Graph / Twitter Cards[web:108] -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ильяс — DevOps и системный аналитик">
+  <meta property="og:description" content="Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты и игровые прототипы.">
+  <meta property="og:locale" content="ru_RU">
+  <!-- При появлении домена/картинки можно раскомментировать:
   <meta property="og:url" content="https://onlymyrep.github.io/me/">
   <meta property="og:image" content="https://onlymyrep.github.io/me/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ильяс — DevOps и системный аналитик">
+  <meta name="twitter:description" content="Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты и игровые прототипы.">
   -->
 
-  <!-- Рукописный шрифт для заголовков и контактов (один шрифт вместо нескольких = меньше вес)[web:105] -->
-  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+  <!-- Микроразметка JSON‑LD для Person[web:116][web:117][web:120] -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ильяс",
+    "jobTitle": "DevOps-инженер, системный аналитик",
+    "url": "https://onlymyrep.github.io/me/",
+    "email": "mailto:mukashevilias@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Казань",
+      "addressCountry": "RU"
+    },
+    "sameAs": [
+      "https://github.com/onlymyrep",
+      "https://t.me/bartonjo"
+    ],
+    "knowsAbout": [
+      "Kubernetes", "Docker", "GitLab CI", "ELK", "Prometheus", "Grafana",
+      "Python", "Swift", "Django", "CI/CD", "HR automation", "Monitoring"
+    ]
+  }
+  </script>
 
-  <!-- Tailwind через CDN — можно будет заменить на минифицированный CSS позже -->
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <!-- Рукописный шрифт для заголовков и контактов[web:105] -->
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
 
   <style>
     html {
@@ -37,6 +64,7 @@
       min-height: 100vh;
       color: #F0EDEE;
       padding: 1.5rem;
+      margin: 0;
     }
 
     .page-container {
@@ -45,8 +73,20 @@
       padding-top: 2.5rem;
     }
 
-    /* Рукописные заголовки */
+    /* Выжженный/светящийся стиль текста[web:121][web:124] */
+    .burned-text {
+      font-family: "Marck Script", cursive;
+      color: #fff7e6;
+      text-shadow:
+        0 -1px 3px #fff,
+        0 -2px 6px #FF3,
+        0 -6px 12px #F90,
+        0 -10px 20px #C33;
+    }
+
     .handwritten-main {
+      @apply burned-text;
+      /* @apply для Tailwind, но на чистом CSS дублируем: */
       font-family: "Marck Script", cursive;
       font-size: 2.4rem;
       font-weight: 400;
@@ -64,6 +104,9 @@
       color: #F2EAE9;
       opacity: 0.9;
       margin-bottom: 2rem;
+      text-shadow:
+        0 0 4px rgba(255, 248, 220, 0.8),
+        0 0 10px rgba(255, 140, 0, 0.4);
     }
 
     .section-title-handwritten {
@@ -72,6 +115,12 @@
       font-weight: 400;
       letter-spacing: 0.04em;
       margin-bottom: 0.6rem;
+      color: #fff7e6;
+      text-shadow:
+        0 -1px 3px #fff,
+        0 -2px 6px #FFB347,
+        0 -5px 10px #FF8C00,
+        0 -8px 18px #C33;
     }
 
     .section-subtitle {
@@ -194,11 +243,11 @@
       }
     }
 
-    /* Минималистичный аудио‑плеер */
+    /* Минималистичный аудио‑плеер с переключателями треков */
     .audio-player {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.4rem;
       padding: 0.45rem 0.8rem;
       border-radius: 999px;
       background: rgba(42,31,29,0.7);
@@ -209,7 +258,7 @@
       font-size: 0.8rem;
     }
 
-    .audio-button {
+    .audio-button, .audio-skip {
       width: 26px;
       height: 26px;
       border-radius: 999px;
@@ -226,7 +275,8 @@
       font-size: 12px;
     }
 
-    .audio-button:active {
+    .audio-button:active,
+    .audio-skip:active {
       transform: translateY(1px);
       box-shadow:
         1px 1px 2px rgba(0,0,0,0.45),
@@ -235,6 +285,10 @@
 
     .audio-track-title {
       opacity: 0.85;
+      max-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Кнопка "Показать портфолио" */
@@ -275,6 +329,12 @@
       letter-spacing: 0.04em;
       text-align: center;
       margin-bottom: 1rem;
+      color: #fff7e6;
+      text-shadow:
+        0 -1px 3px #fff,
+        0 -2px 6px #FFB347,
+        0 -5px 10px #FF8C00,
+        0 -8px 18px #C33;
     }
 
     .tag-cloud {
@@ -477,6 +537,12 @@
       font-family: "Marck Script", cursive;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
+      color: #fff7e6;
+      text-shadow:
+        0 -1px 3px #fff,
+        0 -2px 6px #FFB347,
+        0 -5px 10px #FF8C00,
+        0 -8px 18px #C33;
     }
 
     .footer-handwritten-sub {
@@ -540,18 +606,18 @@
           <div>hr@devops‑portfolio</div>
         </div>
         <div class="terminal-body" id="terminalBody">
-          <!-- текст напечатается скриптом с "огненным" эффектом -->
+          <!-- текст напечатается скриптом с "выжженым" эффектом -->
         </div>
 
         <div class="terminal-footer">
           <!-- Минималистичный плеер -->
           <div class="audio-player">
-            <button class="audio-button" id="audioToggle" aria-label="Play / Pause">
-              ▶
-            </button>
-            <span class="audio-track-title" id="audioTitle">focus_track.mp3</span>
+            <button class="audio-skip" id="prevTrack" aria-label="Previous track">⏮</button>
+            <button class="audio-button" id="audioToggle" aria-label="Play / Pause">▶</button>
+            <button class="audio-skip" id="nextTrack" aria-label="Next track">⏭</button>
+            <span class="audio-track-title" id="audioTitle">track1.mp3</span>
             <audio id="introAudio">
-              <!-- позже подставишь путь к треку -->
+              <!-- позже подставишь свои пути к трекам -->
               <source src="audio/track1.mp3" type="audio/mpeg">
             </audio>
           </div>
@@ -565,9 +631,9 @@
       </div>
     </section>
 
-    <!-- Шапка (рукописная) -->
+    <!-- Шапка: только имя, выжженный стиль -->
     <header class="mb-8 portfolio-content" id="headerContent">
-      <div class="handwritten-main">ИЛЬЯС МУХАШЕВ</div>
+      <div class="handwritten-main">Ильяс</div>
       <div class="handwritten-sub">DevOps / системный аналитик</div>
     </header>
 
@@ -834,7 +900,12 @@
   </div>
 
   <script>
-    // Показ портфолио по кнопке
+    // Всегда скроллим в начало при загрузке, чтобы терминал был виден
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+      startTyping();
+    });
+
     const showBtn = document.getElementById("showPortfolioBtn");
     const portfolioContent = document.getElementById("portfolioContent");
     const headerContent = document.getElementById("headerContent");
@@ -845,13 +916,37 @@
       headerContent.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
-    // Минималистичный плеер
+    // Плеер с переключением треков
     const audio = document.getElementById("introAudio");
     const audioToggle = document.getElementById("audioToggle");
+    const audioTitle = document.getElementById("audioTitle");
+    const prevTrackBtn = document.getElementById("prevTrack");
+    const nextTrackBtn = document.getElementById("nextTrack");
+
+    const tracks = [
+      { src: "audio/track1.mp3", title: "track1.mp3" },
+      { src: "audio/track2.mp3", title: "track2.mp3" },
+      { src: "audio/track3.mp3", title: "track3.mp3" }
+    ];
+    let currentTrackIndex = 0;
+
+    function loadTrack(index, autoplay = false) {
+      currentTrackIndex = (index + tracks.length) % tracks.length;
+      const track = tracks[currentTrackIndex];
+      audio.src = track.src;
+      audioTitle.textContent = track.title;
+      if (autoplay) {
+        audio.play().catch(() => {});
+        audioToggle.textContent = "❚❚";
+      } else {
+        audio.pause();
+        audioToggle.textContent = "▶";
+      }
+    }
 
     audioToggle.addEventListener("click", () => {
       if (audio.paused) {
-        audio.play();
+        audio.play().catch(() => {});
         audioToggle.textContent = "❚❚";
       } else {
         audio.pause();
@@ -859,19 +954,34 @@
       }
     });
 
-    // Интерактивный терминал с "огненным" эффектом[web:112][web:115]
+    prevTrackBtn.addEventListener("click", () => {
+      loadTrack(currentTrackIndex - 1, true);
+    });
+
+    nextTrackBtn.addEventListener("click", () => {
+      loadTrack(currentTrackIndex + 1, true);
+    });
+
+    audio.addEventListener("ended", () => {
+      loadTrack(currentTrackIndex + 1, true);
+    });
+
+    // Инициализация первого трека
+    loadTrack(0, false);
+
+    // Интерактивный терминал с "выжженым" эффектом[web:112][web:115]
     const terminalBody = document.getElementById("terminalBody");
     const lines = [
       'hr@portfolio:~$ ssh ilyas@kazan\n',
       'Connecting to ilyas@kazan...\n',
       'Connection established.\n\n',
       'hr@portfolio:~$ whoami\n',
-      'Ильяс Мухашев — DevOps / системный аналитик.\n\n',
+      'Ильяс — DevOps / системный аналитик.\n\n',
       'hr@portfolio:~$ cat stack.txt\n',
       'Kubernetes · Docker · GitLab CI\n',
       'ELK · Prometheus · Grafana\n',
       'Python · Swift · Django · PostgreSQL\n\n',
-      'hr@portfolio:~$ # остальное "выжжено" ниже на странице'
+      'hr@portfolio:~$ # детали "выжжены" в секциях ниже'
     ];
 
     let lineIndex = 0;
@@ -892,14 +1002,12 @@
       const currentLine = lines[lineIndex];
       const ch = currentLine.charAt(charIndex);
 
-      // создаём span с "огненным" классом для текущего символа
-      const span = document.createElement("span");
-      span.className = "terminal-fire";
-      span.textContent = ch === "\n" ? "\n" : ch;
-
       if (ch === "\n") {
         terminalBody.appendChild(document.createElement("br"));
       } else {
+        const span = document.createElement("span");
+        span.className = "terminal-fire";
+        span.textContent = ch;
         terminalBody.appendChild(span);
       }
 
@@ -908,16 +1016,19 @@
       if (charIndex >= currentLine.length) {
         charIndex = 0;
         lineIndex++;
-        // добавляем небольшой "охлаждающий" перенос
-        const spacer = document.createTextNode("");
-        terminalBody.appendChild(spacer);
       }
 
       const speed = 25;
       setTimeout(typeNextChar, speed);
     }
 
-    window.addEventListener("load", typeNextChar);
+    function startTyping() {
+      lineIndex = 0;
+      charIndex = 0;
+      typingFinished = false;
+      terminalBody.innerHTML = "";
+      typeNextChar();
+    }
 
     // Лёгкий рандом размеров/прозрачности тегов[web:85][web:87]
     const tagPills = document.querySelectorAll(".tag-pill");

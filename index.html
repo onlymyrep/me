@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ильяс Мукашев | DevOps & Системный аналитик</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Скрываем скроллбар, но оставляем скролл */
+    body::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow: hidden; /* пока открыт матрикс-оверлей */
+    }
+
+    .glass {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #06b6d4, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .matrix-overlay {
+      background: #000000;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .terminal-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background-color: #0f0;
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%     { opacity: 0; }
+    }
+
+    .typed-line {
+      min-height: 2em;
+      color: #0f0;
+      white-space: pre-wrap;
+    }
+
+    s {
+      color: #a0a0a0;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Плашки стека */
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #2a2f3a, #151821);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow:
+        2px 2px 6px rgba(0, 0, 0, 0.85),
+        -1px -1px 4px rgba(110, 120, 140, 0.35);
+    }
+
+    .tech-pill img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(1.4);
+      opacity: 0.95;
+    }
+
+    .tech-pill span {
+      font-size: 0.8rem;
+      color: #d2d7e2;
+      letter-spacing: 0.02em;
+    }
+
+    .desktop-nav-link.active .nav-icon-wrapper {
+      border-color: #06b6d4 !important;
+      color: #06b6d4 !important;
+      box-shadow: 0 0 8px rgba(6,182,212,0.5);
+      transform: scale(1.05);
+    }
+
+    .mobile-nav-link.active {
+      background-color: rgba(6,182,212,0.2) !important;
+      color: #06b6d4 !important;
+    }
+  </style>
+</head>
+
+<body class="bg-black text-gray-200 antialiased selection:bg-cyan-500/30">
+
+  <!-- МАТРИКС-ОВЕРЛЕЙ -->
+  <div id="matrixOverlay" class="matrix-overlay fixed inset-0 z-[200] flex flex-col items-center justify-center px-4 transition-opacity duration-700">
+    <div class="max-w-xl w-full bg-black/90 border border-green-500/30 rounded-xl p-6 shadow-2xl shadow-green-500/10">
+      <div class="flex items-center gap-2 text-green-500 text-sm mb-4 border-b border-green-500/30 pb-2">
+        <span class="font-mono">hr@portfolio:~$</span>
+        <span class="terminal-cursor"></span>
+      </div>
+      <div id="terminalOutput" class="space-y-2 font-mono text-sm md:text-base"></div>
+      <div id="enterButtonContainer" class="mt-6 text-center hidden">
+        <button id="enterMatrixBtn" class="px-5 py-2 rounded-full bg-green-500/20 border border-green-400 text-green-300 hover:bg-green-500/40 transition-all hover:scale-105 text-sm font-mono">
+          [ Вход только для HR → ]
+        </button>
+      </div>
+    </div>
+    <div class="absolute bottom-4 text-green-800/50 text-xs font-mono">
+      $ echo "всё будет, но не сразу"
+    </div>
+  </div>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="relative z-10 overflow-x-hidden">
+    <div id="scrollProgress" class="fixed top-0 left-0 right-0 h-1 bg-cyan-500 origin-left z-50" style="transform: scaleX(0);"></div>
+
+    <!-- Мобильная навигация -->
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 md:hidden flex gap-4 px-6 py-3 rounded-full glass border border-white/10 bg-black/70 backdrop-blur-xl">
+      <a href="#hero" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="hero">
+        <i data-lucide="home" class="w-4 h-4"></i>
+      </a>
+      <a href="#about" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="about">
+        <i data-lucide="user" class="w-4 h-4"></i>
+      </a>
+      <a href="#experience" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="experience">
+        <i data-lucide="briefcase" class="w-4 h-4"></i>
+      </a>
+      <a href="#flow" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="flow">
+        <i data-lucide="network" class="w-4 h-4"></i>
+      </a>
+      <a href="#projects" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="projects">
+        <i data-lucide="code" class="w-4 h-4"></i>
+      </a>
+      <a href="#contact" class="mobile-nav-link p-2 rounded-full transition-all duration-300 text-zinc-500" data-nav="contact">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+    <!-- Десктопная боковая навигация -->
+    <div class="fixed left-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-6 z-50">
+      <div class="absolute left-[19px] top-0 bottom-0 w-0.5 bg-zinc-800 -z-10"></div>
+
+      <a href="#hero" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="hero">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="home" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap">
+          Главная
+        </span>
+      </a>
+
+      <a href="#about" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="about">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="user" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100">
+          Обо мне
+        </span>
+      </a>
+
+      <a href="#experience" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="experience">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100">
+          Опыт
+        </span>
+      </a>
+
+      <a href="#flow" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="flow">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="network" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100">
+          Поток данных
+        </span>
+      </a>
+
+      <a href="#projects" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="projects">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="folder-code" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100">
+          Проекты
+        </span>
+      </a>
+
+      <a href="#contact" class="desktop-nav-link group flex items-center gap-4 relative" data-nav="contact">
+        <div class="nav-icon-wrapper w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 bg-black border-zinc-800 text-zinc-600">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </div>
+        <span class="absolute left-14 px-3 py-1 rounded bg-zinc-900 border border-white/10 text-sm opacity-0 group-hover:opacity-100">
+          Контакты
+        </span>
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 rounded-full blur-[100px]"></div>
+
+      <div class="container mx-auto px-6 text-center z-10 flex flex-col items-center">
+        <div class="mb-8 animate-[scaleIn_0.6s_ease-out] relative">
+          <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-cyan-500/50 overflow-hidden shadow-xl relative">
+            <img src="profile.jpg" alt="Ильяс Мукашев" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full -z-10"></div>
+        </div>
+
+        <div class="animate-[fadeInUp_0.6s_ease-out]">
+          <span class="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-sm font-light text-cyan-400 mb-6 backdrop-blur-md">
+            Доступен для проектов
+          </span>
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            Ильяс <span class="text-gradient">Мукашев</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-10 font-light">
+            DevOps / Системный аналитик · CI/CD · Kubernetes · ELK · IaC
+          </p>
+
+          <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-16">
+            <a href="#projects" class="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-zinc-200 transition flex items-center gap-2">
+              Проекты
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#contact" class="px-8 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition backdrop-blur flex items-center gap-2">
+              Связаться
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <div class="flex gap-6 justify-center">
+            <a target="_blank" href="https://github.com/onlymyrep" class="text-zinc-400 hover:text-white">
+              <i data-lucide="github" class="w-6 h-6"></i>
+            </a>
+            <a target="_blank" href="https://t.me/bartonjo" class="text-zinc-400 hover:text-sky-400">
+              <i data-lucide="send" class="w-6 h-6"></i>
+            </a>
+            <a target="_blank" href="mailto:mukashevilias@gmail.com" class="text-zinc-400 hover:text-cyan-400">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-zinc-500 animate-bounce">
+        <i data-lucide="chevron-down" class="w-6 h-6"></i>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 bg-zinc-900/20 relative z-10">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto opacity-0 translate-y-5 transition-all duration-700 about-card">
+          <h2 class="text-3xl font-bold mb-12 text-center">
+            О <span class="text-gradient">себе</span>
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-12 items-start">
+            <!-- Описание -->
+            <div class="space-y-6 text-zinc-400">
+              <p>
+                DevOps-инженер и системный аналитик: CI/CD, Kubernetes, инфраструктура как код.
+                Рабочие языки — Python, Swift, Java, Bash. GitLab CI, GitHub Actions, PostgreSQL.
+              </p>
+              <p>
+                Собираю надёжные пайплайны, мониторинг и логирование вокруг приложений.
+                Разрабатываю HR-инструменты, игровые прототипы и AI‑решения.
+                Приоритеты — предсказуемые релизы, наблюдаемость и прозрачная инфраструктура.
+              </p>
+            </div>
+
+            <!-- Стек -->
+            <div class="bg-zinc-900 border border-white/5 rounded-2xl p-6">
+              <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                <i data-lucide="terminal" class="w-5 h-5 text-cyan-400"></i>
+                Стек
+              </h3>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="tech-pill">
+                  <img src="icons/kubernetes.svg" alt="Kubernetes">
+                  <span>Kubernetes</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/docker.svg" alt="Docker">
+                  <span>Docker</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/gitlab.svg" alt="GitLab CI">
+                  <span>GitLab CI</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/github-actions.svg" alt="GitHub Actions">
+                  <span>GitHub Actions</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/elk.svg" alt="ELK">
+                  <span>ELK (ES, LS, Kibana)</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/prometheus.svg" alt="Prometheus">
+                  <span>Prometheus</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/grafana.svg" alt="Grafana">
+                  <span>Grafana</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/postgresql.svg" alt="PostgreSQL">
+                  <span>PostgreSQL</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/nginx.svg" alt="Nginx">
+                  <span>Nginx</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/python.svg" alt="Python">
+                  <span>Python</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/swift.svg" alt="Swift">
+                  <span>Swift</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/java.svg" alt="Java">
+                  <span>Java</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/bash.svg" alt="Bash">
+                  <span>Bash</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/html5.svg" alt="HTML">
+                  <span>HTML</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/css3.svg" alt="CSS">
+                  <span>CSS</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/javascript.svg" alt="JavaScript">
+                  <span>JavaScript</span>
+                </div>
+                <div class="tech-pill">
+                  <img src="icons/c-lang.svg" alt="C">
+                  <span>C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-20 relative">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-16 text-center">
+            Опыт <span class="text-gradient">работы</span>
+          </h2>
+
+          <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-700 before:to-transparent">
+
+            <!-- DevOps / Системный аналитик -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group exp-item opacity-0 translate-x-[-20px] transition-all duration-700">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-zinc-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                <i data-lucide="briefcase" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 transition">
+                <div class="flex flex-col sm:flex-row justify-between mb-4">
+                  <h3 class="font-bold text-lg text-white">DevOps / Системный аналитик</h3>
+                  <time class="text-xs text-zinc-500 uppercase">2021 – н.в.</time>
+                </div>
+                <p class="text-cyan-400 text-sm mb-4">Freelance</p>
+                <ul class="space-y-2 text-sm text-zinc-400 list-disc pl-5">
+                  <li>CI/CD для Java: деплой 4ч → 15 мин.</li>
+                  <li>Миграция на Kubernetes, GitOps, Helm.</li>
+                  <li>Снижение облачных расходов на 20%.</li>
+                  <li>Vault, ELK.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- iOS & Python -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group exp-item opacity-0 translate-x-[20px] transition-all duration-700 delay-100">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-zinc-900 shadow shrink-0 md:order-1">
+                <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 transition">
+                <div class="flex flex-col sm:flex-row justify-between mb-4">
+                  <h3 class="font-bold text-lg text-white">iOS & Python разработчик</h3>
+                  <time class="text-xs text-zinc-500">2024 – н.в.</time>
+                </div>
+                <p class="text-cyan-400 text-sm mb-4">Фриланс</p>
+                <ul class="space-y-2 text-sm text-zinc-400 list-disc pl-5">
+                  <li>Swift (MVVM, SwiftUI, CoreData), Python.</li>
+                  <li>HR‑автоматизация: оценка, рассылки, поздравления.</li>
+                  <li>Промт-инжиниринг: Agar.io, расписания, крестики‑нолики.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Инфраструктура & Наблюдаемость -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group exp-item opacity-0 translate-x-[-20px] transition-all duration-700 delay-200">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-zinc-900 shadow shrink-0 md:order-1">
+                <i data-lucide="shield" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-cyan-500/30 transition">
+                <div class="flex flex-col sm:flex-row justify-between mb-4">
+                  <h3 class="font-bold text-lg text-white">Инфраструктура & Наблюдаемость</h3>
+                  <time class="text-xs text-zinc-500">2022 – 2025</time>
+                </div>
+                <p class="text-cyan-400 text-sm mb-4">DevOps</p>
+                <ul class="space-y-2 text-sm text-zinc-400 list-disc pl-5">
+                  <li>Кластер PostgreSQL (Patroni): фейловер, PITR.</li>
+                  <li>Prometheus + Grafana, алерты.</li>
+                  <li>Автоматизация развёртывания и конфигураций (скрипты, CI/CD).</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELK DATA FLOW -->
+    <section id="flow" class="py-20 bg-zinc-900/30">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto bg-zinc-900 border border-white/5 rounded-2xl p-8">
+          <h2 class="text-3xl font-bold mb-6 text-center">
+            Поток данных <span class="text-gradient">ELK</span>
+          </h2>
+          <p class="text-zinc-400 mb-8 text-center">
+            Развёрнут отказоустойчивый кластер ELK: несколько Logstash‑узлов, Elasticsearch‑узлы разных ролей и отдельный Kibana‑сервер. Ниже — как проходит событие от лог‑файла до дашборда.
+          </p>
+
+          <!-- 3.1 Пошагово -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">3.1. Пошагово</h3>
+            <ol class="list-decimal pl-5 space-y-2 text-sm text-zinc-300">
+              <li>Событие появляется в лог‑файле на сервере‑источнике.</li>
+              <li>Filebeat читает новую строку и добавляет служебные поля.</li>
+              <li>Событие отправляется в Logstash по Beats‑протоколу.</li>
+              <li>Logstash разбирает строку фильтрами и нормализует поля.</li>
+              <li>Событие индексируется в Elasticsearch.</li>
+              <li>Kibana делает запрос к Elasticsearch и показывает результат пользователю.</li>
+            </ol>
+          </div>
+
+          <!-- 3.2 Filebeat / 3.3 Logstash / 3.4 ES / 3.5 Kibana -->
+          <div class="grid md:grid-cols-2 gap-6 text-sm text-zinc-300">
+            <div>
+              <h3 class="font-semibold mb-2">3.2. Filebeat</h3>
+              <p>
+                Собирает логи с заданных путей, помечает их тегами, хостами и типами, буферизует данные при кратковременных сбоях сети.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">3.3. Logstash</h3>
+              <p>
+                Выполняет парсинг и обогащение: выделяет время, хост, приложение, уровень логирования и приводит всё к единому формату.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">3.4. Elasticsearch</h3>
+              <p>
+                Распределяет документы по шардам и репликам, обеспечивает быстрый поиск и аналитические запросы по большим объёмам логов.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">3.5. Kibana</h3>
+              <p>
+                Даёт интерфейс для построения дашбордов, сохранённых поисков и визуализаций по индексам с логами.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (сюда можно вставить твой текущий блок проектов без IP/hostname) -->
+    <section id="projects" class="py-20 bg-zinc-900/20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-16 text-center">
+            Ключевые <span class="text-gradient">проекты</span>
+          </h2>
+
+          <!-- Пример одной секции DevOps & Автоматизация. Остальное можешь перенести из своего текущего HTML. -->
+          <h3 class="text-2xl font-semibold mb-6 text-cyan-400 flex items-center gap-2">
+            <i data-lucide="settings" class="w-6 h-6"></i>
+            DevOps & Автоматизация
+          </h3>
+          <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <a href="https://github.com/onlymyrep/DevOps_ci_cd" target="_blank" class="group bg-zinc-900 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/50 transition hover:-translate-y-1 block">
+              <div class="flex justify-between items-start mb-4">
+                <i data-lucide="git-pull-request" class="w-8 h-8 text-cyan-400"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-1">CI/CD для C</h3>
+              <p class="text-sm text-cyan-500/80 mb-3">GitLab CI · Docker</p>
+              <p class="text-zinc-400 text-sm">Конвейер: сборка, тесты, статический анализ.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="text-xs px-2 py-1 rounded bg-white/5">GitLab CI</span>
+                <span class="text-xs px-2 py-1 rounded bg-white/5">GCC</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/onlymyrep/DevOps_monitoring" target="_blank" class="group bg-zinc-900 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/50 transition hover:-translate-y-1 block">
+              <div class="flex justify-between items-start mb-4">
+                <i data-lucide="monitor" class="w-8 h-8 text-cyan-400"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-1">Мониторинг</h3>
+              <p class="text-sm text-cyan-500/80 mb-3">Prometheus · Grafana · ELK</p>
+              <p class="text-zinc-400 text-sm">Метрики, алертинг, централизованные логи.</p>
+            </a>
+          </div>
+
+          <!-- Остальные секции (Web / Game Dev / AI & Аналитика) можешь вставить из своего существующего шаблона. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-zinc-900/30">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto contact-card bg-zinc-900 border border-white/5 rounded-2xl p-8 opacity-0 translate-y-5 transition-all duration-700">
+          <h2 class="text-3xl font-bold mb-6 text-center">
+            Связаться <span class="text-gradient">со мной</span>
+          </h2>
+          <p class="text-zinc-400 text-center mb-8">
+            Открыт к предложениям по DevOps, автоматизации, аналитике и игровым прототипам.
+          </p>
+          <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+            <a href="mailto:mukashevilias@gmail.com" class="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-zinc-200 transition flex items-center gap-2 justify-center">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              Email
+            </a>
+            <a href="https://t.me/bartonjo" target="_blank" class="px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center gap-2 justify-center">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Telegram
+            </a>
+          </div>
+          <div class="text-center text-sm text-zinc-500">
+            Казань · DevOps / Системный аналитик · Kubernetes · ELK · Python · Swift
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    // init lucide
+    lucide.createIcons();
+
+    // === Matrix typing demo ===
+    const lines = [
+      'hr@portfolio:~$ whoami',
+      'Ильяс Мукашев — DevOps / Системный аналитик.',
+      'hr@portfolio:~$ echo "всё будет, но не сразу"',
+      'всё будет, но системно.'
+    ];
+
+    const terminalOutput = document.getElementById('terminalOutput');
+    const enterMatrixBtn = document.getElementById('enterMatrixBtn');
+    const enterButtonContainer = document.getElementById('enterButtonContainer');
+    const matrixOverlay = document.getElementById('matrixOverlay');
+
+    let lineIndex = 0;
+
+    function typeLine(text, cb) {
+      const lineEl = document.createElement('div');
+      lineEl.className = 'typed-line';
+      terminalOutput.appendChild(lineEl);
+
+      let idx = 0;
+      const interval = setInterval(() => {
+        lineEl.textContent = text.slice(0, idx);
+        idx++;
+        if (idx > text.length) {
+          clearInterval(interval);
+          setTimeout(cb, 500);
+        }
+      }, 40);
+    }
+
+    function runTyping() {
+      if (lineIndex >= lines.length) {
+        enterButtonContainer.classList.remove('hidden');
+        return;
+      }
+      typeLine(lines[lineIndex], () => {
+        lineIndex++;
+        runTyping();
+      });
+    }
+
+    runTyping();
+
+    // === Вход + разблокировка скролла ===
+    if (enterMatrixBtn) {
+      enterMatrixBtn.addEventListener('click', () => {
+        matrixOverlay.style.opacity = '0';
+        setTimeout(() => {
+          matrixOverlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          document.documentElement.style.overflow = 'auto';
+        }, 700);
+      });
+    }
+
+    // === Подсветка навигации ===
+    const sections = ['hero', 'about', 'experience', 'flow', 'projects', 'contact'];
+    const desktopLinks = document.querySelectorAll('.desktop-nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 150;
+      let current = 'hero';
+      for (let s of sections) {
+        const el = document.getElementById(s);
+        if (el && el.offsetTop <= scrollPos) current = s;
+        else break;
+      }
+      desktopLinks.forEach(link => {
+        if (link.getAttribute('data-nav') === current) link.classList.add('active');
+        else link.classList.remove('active');
+      });
+      mobileLinks.forEach(link => {
+        if (link.getAttribute('data-nav') === current) link.classList.add('active');
+        else link.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('resize', updateActiveNav);
+    updateActiveNav();
+
+    // === Плавный скролл по якорям ===
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === "#") return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // === Прогресс скролла ===
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = winScroll / height;
+      const prog = document.getElementById('scrollProgress');
+      if (prog) prog.style.transform = `scaleX(${scrolled})`;
+    });
+
+    // === Анимация появления элементов ===
+    const obsOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateX(0) translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, obsOptions);
+
+    document.querySelectorAll('.about-card, .exp-item, .contact-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

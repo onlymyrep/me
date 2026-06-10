@@ -17,10 +17,6 @@
   <meta property="og:title" content="Ильяс — DevOps и системный аналитик">
   <meta property="og:description" content="Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты, AI и игровые прототипы.">
   <meta property="og:locale" content="ru_RU">
-  <!-- можно дополнить:
-  <meta property="og:url" content="https://onlymyrep.github.io/me/">
-  <meta property="og:image" content="https://onlymyrep.github.io/me/preview.png">
-  -->
 
   <!-- JSON-LD Person -->
   <script type="application/ld+json">
@@ -254,7 +250,7 @@
     .audio-player {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       padding: 0.45rem 0.8rem;
       border-radius: 999px;
       background: rgba(42,31,29,0.7);
@@ -291,11 +287,51 @@
     }
 
     .audio-track-title {
-      opacity: 0.85;
-      max-width: 150px;
+      opacity: 0.9;
+      max-width: 260px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    @media (max-width: 480px) {
+      .audio-track-title {
+        max-width: 150px;
+      }
+    }
+
+    .audio-volume {
+      width: 80px;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(240, 237, 237, 0.4);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .audio-volume::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f2eae9;
+      box-shadow:
+        0 0 4px rgba(0,0,0,0.5),
+        0 0 6px rgba(255, 248, 220, 0.7);
+    }
+
+    .audio-volume::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: #f2eae9;
+      box-shadow:
+        0 0 4px rgba(0,0,0,0.5),
+        0 0 6px rgba(255, 248, 220, 0.7);
     }
 
     .show-portfolio-btn {
@@ -613,7 +649,20 @@
             <button class="audio-skip" id="prevTrack" aria-label="Previous track">⏮</button>
             <button class="audio-button" id="audioToggle" aria-label="Play / Pause">▶</button>
             <button class="audio-skip" id="nextTrack" aria-label="Next track">⏭</button>
-            <span class="audio-track-title" id="audioTitle">track1.mp3</span>
+
+            <span class="audio-track-title" id="audioTitle" title="track1.mp3">track1.mp3</span>
+
+            <input
+              type="range"
+              id="audioVolume"
+              class="audio-volume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.8"
+              aria-label="Громкость"
+            >
+
             <audio id="introAudio">
               <source src="audio/track1.mp3" type="audio/mpeg">
             </audio>
@@ -730,7 +779,7 @@
         </div>
       </section>
 
-      <!-- ELK / наблюдаемость (отдельная секция, чтобы тегам было куда вести) -->
+      <!-- ELK / наблюдаемость -->
       <section class="section-card" id="elk">
         <h2 class="section-title-handwritten burned-soft">ELK и наблюдаемость</h2>
         <p class="section-subtitle">
@@ -745,7 +794,7 @@
       </section>
 
       <!-- DevOps & Автоматизация -->
-      <section class="section-card" id="devops">
+      <section class="section-card" id="devops" data-section="DevOps">
         <h2 class="section-title-handwritten burned-soft">DevOps и автоматизация</h2>
         <p class="section-subtitle">
           CI/CD, инфраструктура как код, провизия узлов, мониторинг и операционка вокруг сервисов.
@@ -795,7 +844,7 @@
       </section>
 
       <!-- Веб‑приложения и инструменты -->
-      <section class="section-card" id="web-tools">
+      <section class="section-card" id="web-tools" data-section="Web tools">
         <h2 class="section-title-handwritten burned-soft">Веб‑приложения и инструменты</h2>
         <p class="section-subtitle">
           Сервисы для HR, визуализации графов, генерации расписаний и работы с лабиринтами.
@@ -837,7 +886,7 @@
       </section>
 
       <!-- Game Development -->
-      <section class="section-card" id="gamedev">
+      <section class="section-card" id="gamedev" data-section="GameDev">
         <h2 class="section-title-handwritten burned-soft">Game Development</h2>
         <p class="section-subtitle">
           Игровые прототипы и демо на Unity, Java и Swift с упором на механику и сетевое взаимодействие.
@@ -887,7 +936,7 @@
       </section>
 
       <!-- AI и аналитика -->
-      <section class="section-card" id="ai-analytics">
+      <section class="section-card" id="ai-analytics" data-section="AI & Analytics">
         <h2 class="section-title-handwritten burned-soft">AI и аналитика</h2>
         <p class="section-subtitle">
           Инструменты для аналитики кандидатов, оценки промпт‑инжиниринга и продуктовые исследования.
@@ -949,13 +998,22 @@
   </div>
 
   <script>
-    
+    // Скролл наверх и запуск терминала
     window.addEventListener("load", () => {
       window.scrollTo(0, 0);
       startTyping();
     });
 
-    
+    // Скролл с оффсетом для имени[web:151][web:155]
+    function scrollToWithOffset(target, offset) {
+      const rect = target.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      window.scrollTo({
+        top: absoluteTop - offset,
+        behavior: "smooth"
+      });
+    }
+
     const showBtn = document.getElementById("showPortfolioBtn");
     const portfolioContent = document.getElementById("portfolioContent");
     const headerContent = document.getElementById("headerContent");
@@ -964,16 +1022,17 @@
       showBtn.addEventListener("click", () => {
         portfolioContent.classList.add("visible");
         headerContent.classList.add("visible");
-        headerContent.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollToWithOffset(headerContent, 60);
       });
     }
 
-    
+    // Плеер
     const audio = document.getElementById("introAudio");
     const audioToggle = document.getElementById("audioToggle");
     const audioTitle = document.getElementById("audioTitle");
     const prevTrackBtn = document.getElementById("prevTrack");
     const nextTrackBtn = document.getElementById("nextTrack");
+    const audioVolume = document.getElementById("audioVolume");
 
     const tracks = [
       { src: "audio/SLEIPNIRS_RIDE___Eight_Legged_Horse_Journey__vikingmusic__norse__valhallavibez.mp3", title: "SLEIPNIRS_RIDE___Eight_Legged_Horse_Journey__vikingmusic__norse__valhallavibez.mp3" },
@@ -997,13 +1056,24 @@
 
     function loadTrack(index, autoplay = false) {
       if (!audio) return;
+
       currentTrackIndex = (index + tracks.length) % tracks.length;
       const track = tracks[currentTrackIndex];
+
       audio.src = track.src;
-      if (audioTitle) audioTitle.textContent = track.title;
+      if (audioTitle) {
+        audioTitle.textContent = track.title;
+        audioTitle.title = track.title;
+      }
 
       if (autoplay) {
-        audio.play().catch(() => {}).finally(updateToggleIcon);
+        audio
+          .play()
+          .then(updateToggleIcon)
+          .catch((err) => {
+            console.error("Audio play blocked or failed:", err);
+            updateToggleIcon();
+          });
       } else {
         audio.pause();
         updateToggleIcon();
@@ -1013,7 +1083,13 @@
     if (audioToggle && audio) {
       audioToggle.addEventListener("click", () => {
         if (audio.paused) {
-          audio.play().catch(() => {}).finally(updateToggleIcon);
+          audio
+            .play()
+            .then(updateToggleIcon)
+            .catch((err) => {
+              console.error("Audio play blocked or failed:", err);
+              updateToggleIcon();
+            });
         } else {
           audio.pause();
           updateToggleIcon();
@@ -1041,9 +1117,23 @@
       audio.addEventListener("pause", updateToggleIcon);
     }
 
+    // Громкость 0–1 по value range[web:172][web:176][web:179]
+    if (audio && audioVolume) {
+      audio.volume = parseFloat(audioVolume.value);
+      const handleVolume = () => {
+        const v = parseFloat(audioVolume.value);
+        if (!isNaN(v)) {
+          audio.volume = v;
+        }
+      };
+      audioVolume.addEventListener("input", handleVolume);
+      audioVolume.addEventListener("change", handleVolume);
+    }
+
+    // Инициализация первого трека
     loadTrack(0, false);
 
-    
+    // Терминал: только whoami
     const terminalBody = document.getElementById("terminalBody");
     const lines = [
       'hr@portfolio:~$ whoami\n',
@@ -1099,7 +1189,7 @@
       typeNextChar();
     }
 
-    
+    // Лёгкий рандом тегов
     const tagPills = document.querySelectorAll(".tag-pill");
     tagPills.forEach((pill) => {
       const baseScale = pill.dataset.size === "lg" ? 1.0 : 0.96;
@@ -1113,6 +1203,33 @@
       pill.style.transform = `scale(${finalScale})`;
       pill.style.opacity = finalOpacity.toString();
     });
+
+    // Отслеживание кликов по проектам (в консоль)[web:157][web:160]
+    function trackProjectClick(event) {
+      const link = event.currentTarget;
+      const href = link.getAttribute("href") || "";
+      const titleEl = link.querySelector(".project-title");
+      const title = titleEl ? titleEl.textContent.trim() : "(без названия)";
+
+      let sectionName = "(unknown)";
+      const section = link.closest(".section-card");
+      if (section) {
+        sectionName =
+          section.getAttribute("data-section") ||
+          section.id ||
+          sectionName;
+      }
+
+      console.log("[PROJECT_CLICK]", {
+        title,
+        href,
+        section: sectionName
+      });
+    }
+
+    document
+      .querySelectorAll(".project-card")
+      .forEach((card) => card.addEventListener("click", trackProjectClick));
   </script>
 </body>
 </html>

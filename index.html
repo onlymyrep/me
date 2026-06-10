@@ -949,13 +949,13 @@
   </div>
 
   <script>
-    // Скролл наверх и запуск терминала
+    
     window.addEventListener("load", () => {
       window.scrollTo(0, 0);
       startTyping();
     });
 
-    // Показ портфолио
+    
     const showBtn = document.getElementById("showPortfolioBtn");
     const portfolioContent = document.getElementById("portfolioContent");
     const headerContent = document.getElementById("headerContent");
@@ -968,7 +968,7 @@
       });
     }
 
-    // Плеер с переключением треков и синхронным play/pause[web:142]
+    
     const audio = document.getElementById("introAudio");
     const audioToggle = document.getElementById("audioToggle");
     const audioTitle = document.getElementById("audioTitle");
@@ -1043,7 +1043,7 @@
 
     loadTrack(0, false);
 
-    // Терминал: только whoami (быстро и без лагов)[web:140]
+    
     const terminalBody = document.getElementById("terminalBody");
     const lines = [
       'hr@portfolio:~$ whoami\n',
@@ -1099,7 +1099,7 @@
       typeNextChar();
     }
 
-    // Лёгкий рандом тегов (для живости)
+    
     const tagPills = document.querySelectorAll(".tag-pill");
     tagPills.forEach((pill) => {
       const baseScale = pill.dataset.size === "lg" ? 1.0 : 0.96;

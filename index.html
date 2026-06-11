@@ -2,23 +2,23 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-
-  <!-- SEO -->
-  <title>Ильяс — DevOps и системный аналитик (Kubernetes, ELK, CI/CD, Python)</title>
-  <meta name="description" content="Портфолио Ильяса, DevOps-инженера и системного аналитика из Казани: Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты, AI и игровые прототипы.">
-  <meta name="keywords" content="Ильяс, DevOps, системный аналитик, Kubernetes, ELK, CI/CD, GitLab CI, Docker, Terraform, Ansible, Prometheus, Grafana, Python, Swift, Django, HR автоматизация, AI, игры, портфолио">
+  <title>Ильяс — DevOps и системный аналитик</title>
+  <meta name="description" content="Портфолио DevOps-инженера и системного аналитика Ильяса из Казани: Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты, AI и игровые прототипы.">
+  <meta name="keywords" content="Ильяс, DevOps, системный аналитик, Kubernetes, ELK, CI/CD, GitLab CI, Docker, Terraform, Ansible, Prometheus, Grafana, Python, Swift, Django, HR, AI, игры, портфолио">
   <meta name="author" content="Ильяс">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#2a1f1d">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ильяс — DevOps и системный аналитик">
   <meta property="og:description" content="Kubernetes, ELK, CI/CD, мониторинг, Python, Swift, HR-инструменты, AI и игровые прототипы.">
   <meta property="og:locale" content="ru_RU">
-
-  <!-- JSON-LD Person -->
+  <meta property="og:url" content="https://onlymyrep.github.io/me/">
+  <meta property="og:site_name" content="Портфолио Ильяса">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ильяс — DevOps и системный аналитик">
+  <meta name="twitter:description" content="DevOps, ELK, CI/CD, Python, Swift, HR-инструменты и AI.">
+  <link rel="canonical" href="https://onlymyrep.github.io/me/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,665 +37,121 @@
       "https://t.me/bartonjo"
     ],
     "knowsAbout": [
-      "Kubernetes", "Docker", "GitLab CI", "ELK", "Prometheus", "Grafana",
-      "Python", "Swift", "Django", "CI/CD", "HR automation", "Monitoring"
+      "Kubernetes","Docker","GitLab CI","ELK","Prometheus","Grafana",
+      "Python","Swift","Django","CI/CD","HR automation","Monitoring"
     ]
   }
   </script>
-
-  <!-- Рукописный шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: radial-gradient(circle at 10% 20%, #72676F, #2a1f1d);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      color: #F0EDEE;
-      padding: 1.5rem;
-      margin: 0;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    body::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
-
-    .page-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding-top: 2.5rem;
-    }
-
-    /* Глубокое «выжигание» */
-    .burned-strong {
-      font-family: "Marck Script", cursive;
-      color: #fffaf0;
-      text-shadow:
-        0 0 4px  #fff8dc,
-        0 0 10px #ffe4b5,
-        0 0 18px #ffb347,
-        0 0 28px #ff8c00,
-        0 0 38px #ff4500,
-        0 0 48px #c0392b;
-    }
-
-    .burned-soft {
-      font-family: "Marck Script", cursive;
-      color: #fff3dd;
-      text-shadow:
-        0 0 3px  #fff8dc,
-        0 0 8px  #ffb347,
-        0 0 16px #ff8c00,
-        0 0 24px #c0392b;
-    }
-
-    .handwritten-main {
-      font-family: "Marck Script", cursive;
-      font-size: 2.6rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-align: center;
-      margin-bottom: 0.6rem;
-    }
-
-    .handwritten-sub {
-      font-family: "Marck Script", cursive;
-      font-size: 1.4rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-align: center;
-      color: #F2EAE9;
-      opacity: 0.95;
-      margin-bottom: 2rem;
-      text-shadow:
-        0 0 4px rgba(255, 248, 220, 0.8),
-        0 0 12px rgba(255, 140, 0, 0.5);
-    }
-
-    .section-title-handwritten {
-      font-family: "Marck Script", cursive;
-      font-size: 1.9rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: #F0EDEE;
-      margin-bottom: 1.1rem;
-      opacity: 0.9;
-    }
-
-    /* Терминал + плеер */
-    .intro-screen {
-      max-width: 780px;
-      margin: 0 auto 3rem;
-    }
-
-    .terminal-neumo {
-      position: relative;
-      border-radius: 2.2rem;
-      background: #6b5f67;
-      box-shadow:
-        20px 20px 46px #4e4348,
-        -18px -18px 40px #8e838c;
-      padding: 1.7rem 1.5rem 1.4rem;
-      color: #f4efee;
-      overflow: hidden;
-    }
-
-    .terminal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      font-size: 0.78rem;
-      color: #e2dadb;
-      opacity: 0.9;
-    }
-
-    .terminal-dots {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .terminal-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(42,31,29,0.4);
-      box-shadow:
-        1px 1px 2px rgba(0,0,0,0.4),
-        -1px -1px 2px rgba(255,255,255,0.15);
-    }
-
-    .terminal-body {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      background: radial-gradient(circle at 0% 0%, rgba(20,10,10,0.8), rgba(88,78,84,0.45));
-      border-radius: 1.5rem;
-      padding: 1.1rem 1.1rem 1rem;
-      box-shadow:
-        inset 2px 2px 6px rgba(0,0,0,0.5),
-        inset -2px -2px 4px rgba(255,255,255,0.08);
-      min-height: 120px;
-      color: #fdfaf5;
-    }
-
-    .terminal-cursor {
-      display: inline-block;
-      width: 9px;
-      height: 1.1em;
-      background-color: #F4E4C5;
-      vertical-align: middle;
-      margin-left: 2px;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%,100% { opacity: 1; }
-      50%     { opacity: 0; }
-    }
-
-    .terminal-fire {
-      color: #ffe9c7;
-      text-shadow:
-        0 0 2px  #fff8dc,
-        0 0 6px  #ffe4b5,
-        0 0 12px #ffb347,
-        0 0 20px #ff8c00,
-        0 0 30px #ff4500,
-        0 0 40px #b22222;
-      animation: fire-flicker 1.5s infinite ease-in-out;
-    }
-
-    @keyframes fire-flicker {
-      0%, 100% {
-        text-shadow:
-          0 0 2px  #fff8dc,
-          0 0 6px  #ffe4b5,
-          0 0 12px #ffb347,
-          0 0 20px #ff8c00,
-          0 0 30px #ff4500,
-          0 0 40px #b22222;
-      }
-      50% {
-        text-shadow:
-          0 0 4px  #fff8dc,
-          0 0 10px #ffe4b5,
-          0 0 18px #ffb347,
-          0 0 28px #ff8c00,
-          0 0 40px #ff4500,
-          0 0 52px #b22222;
-      }
-    }
-
-    .terminal-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.2rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .audio-player {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(42,31,29,0.7);
-      border: 1px solid rgba(183,157,155,0.7);
-      box-shadow:
-        2px 2px 4px rgba(0,0,0,0.5),
-        -2px -2px 4px rgba(255,255,255,0.12);
-      font-size: 0.8rem;
-    }
-
-    .audio-button, .audio-skip {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: none;
-      background: #E2DADB;
-      color: #2a1f1d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow:
-        2px 2px 4px rgba(0,0,0,0.4),
-        -2px -2px 4px rgba(255,255,255,0.4);
-      font-size: 13px;
-    }
-
-    .audio-button:active,
-    .audio-skip:active {
-      transform: translateY(1px);
-      box-shadow:
-        1px 1px 2px rgba(0,0,0,0.45),
-        -1px -1px 2px rgba(255,255,255,0.2);
-    }
-
-    .audio-track-title {
-      opacity: 0.9;
-      max-width: 260px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    @media (max-width: 480px) {
-      .audio-track-title {
-        max-width: 150px;
-      }
-    }
-
-    .audio-volume {
-      width: 80px;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(240, 237, 237, 0.4);
-      outline: none;
-      cursor: pointer;
-    }
-
-    .audio-volume::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #f2eae9;
-      box-shadow:
-        0 0 4px rgba(0,0,0,0.5),
-        0 0 6px rgba(255, 248, 220, 0.7);
-    }
-
-    .audio-volume::-moz-range-thumb {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: none;
-      background: #f2eae9;
-      box-shadow:
-        0 0 4px rgba(0,0,0,0.5),
-        0 0 6px rgba(255, 248, 220, 0.7);
-    }
-
-    .show-portfolio-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(242,234,233,0.8);
-      background: rgba(242,234,233,0.1);
-      color: #F2EAE9;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
-      box-shadow: 0 12px 20px -14px rgba(0,0,0,0.8);
-    }
-
-    .show-portfolio-btn:hover {
-      background: rgba(242,234,233,0.22);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 24px -14px rgba(0,0,0,0.85);
-    }
-
-    /* Облако тегов */
-    .tag-cloud-section {
-      margin: 0 auto 3.2rem;
-    }
-
-    .tag-cloud-title {
-      font-family: "Marck Script", cursive;
-      font-size: 1.8rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #fffaf0;
-      text-shadow:
-        0 0 3px  #fff8dc,
-        0 0 10px #ffb347,
-        0 0 20px #ff8c00,
-        0 0 30px #ff4500,
-        0 0 40px #b22222;
-    }
-
-    .tag-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem 0.55rem;
-      padding: 1rem 0.3rem;
-    }
-
-    .tag-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      color: #F8F3F2;
-      text-decoration: none;
-      background: rgba(114,103,111,0.55);
-      border: 1px solid rgba(226,218,219,0.7);
-      backdrop-filter: blur(12px);
-      box-shadow:
-        0 10px 18px -12px rgba(0,0,0,0.8),
-        inset 0 0 0 1px rgba(255,255,255,0.05);
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        background 0.18s ease,
-        border-color 0.18s ease,
-        opacity 0.18s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tag-pill::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      opacity: 0;
-      box-shadow:
-        0 0 14px rgba(242,234,233,0.55),
-        0 0 28px rgba(242,234,233,0.35);
-      transition: opacity 0.2s ease;
-    }
-
-    .tag-pill:hover::after {
-      opacity: 1;
-    }
-
-    .tag-pill:hover {
-      transform: translateY(-2px) scale(1.03);
-      background: rgba(139,129,137,0.9);
-      border-color: #F2EAE9;
-      box-shadow:
-        0 16px 24px -14px rgba(0,0,0,0.9);
-      opacity: 1;
-    }
-
-    .tag-pill[data-size="lg"] {
-      font-size: 0.9rem;
-      padding: 0.45rem 1.1rem;
-    }
-
-    .tag-pill[data-size="sm"] {
-      font-size: 0.75rem;
-      opacity: 0.9;
-    }
-
-    @media (max-width: 640px) {
-      .tag-cloud {
-        justify-content: flex-start;
-        padding-inline: 0;
-      }
-      .tag-pill {
-        font-size: 0.8rem;
-        padding: 0.35rem 0.8rem;
-      }
-      .tag-pill[data-size="lg"] {
-        font-size: 0.85rem;
-      }
-      .tag-cloud-title {
-        font-size: 1.6rem;
-      }
-    }
-
-    /* Секции и проекты */
-    .section-card {
-      background: radial-gradient(circle at 0% 0%, rgba(129,119,127,0.85), rgba(90,78,76,0.75));
-      backdrop-filter: blur(16px);
-      border-radius: 2.2rem;
-      border: 1px solid rgba(176,168,167,0.7);
-      padding: 2.1rem 1.8rem;
-      margin-bottom: 2.6rem;
-      box-shadow: 0 32px 56px -24px rgba(0,0,0,0.75);
-      transition: all 0.22s;
-    }
-
-    .section-card:hover {
-      transform: translateY(-6px);
-      border-color: #E2DADB;
-      box-shadow: 0 40px 70px -26px rgba(0,0,0,0.85);
-    }
-
-    .stack-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0.9rem;
-      font-size: 0.92rem;
-    }
-
-    @media (min-width: 768px) {
-      .stack-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      }
-    }
-
-    .tech-item-label {
-      display: inline-block;
-      min-width: 120px;
-      color: #E2DADB;
-      opacity: 0.9;
-    }
-
-    .tech-item {
-      color: #F8F3F2;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.1rem;
-      font-size: 0.9rem;
-      margin-top: 0.4rem;
-    }
-
-    @media (min-width: 900px) {
-      .projects-grid.two-cols {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      }
-    }
-
-    .project-card {
-      background: rgba(114,103,111,0.96);
-      backdrop-filter: blur(12px);
-      border-radius: 1.7rem;
-      border-left: 4px solid #B79D9B;
-      border-right: 1px solid rgba(176,168,167,0.7);
-      border-top: 1px solid rgba(176,168,167,0.7);
-      border-bottom: 1px solid rgba(176,168,167,0.7);
-      padding: 1.1rem 1.1rem 0.95rem;
-      transition: 0.2s;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 22px 34px -18px rgba(0,0,0,0.8);
-    }
-
-    .project-card:hover {
-      background: rgba(139,129,137,0.99);
-      transform: translateY(-4px);
-      box-shadow: 0 30px 44px -20px rgba(0,0,0,0.9);
-    }
-
-    .project-title {
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .project-meta {
-      font-size: 0.8rem;
-      color: #E2DADB;
-      margin-bottom: 0.4rem;
-      opacity: 0.9;
-    }
-
-    .project-text {
-      font-size: 0.9rem;
-      color: #F8F3F2;
-    }
-
-    .small {
-      font-size: 0.88rem;
-    }
-
-    /* Контакты */
-    .footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: #F0EDEE;
-    }
-
-    .footer-handwritten-main {
-      font-family: "Marck Script", cursive;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #fffaf0;
-      text-shadow:
-        0 0 3px  #fff8dc,
-        0 0 10px #ffb347,
-        0 0 20px #ff8c00,
-        0 0 30px #ff4500,
-        0 0 40px #b22222;
-    }
-
-    .footer-handwritten-sub {
-      font-family: "Marck Script", cursive;
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 0.6rem;
-    }
-
-    .footer-links {
-      font-size: 0.9rem;
-      margin-top: 0.4rem;
-    }
-
-    .footer a {
-      color: #F2EAE9;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(226,218,219,0.35);
-      padding-bottom: 1px;
-      transition: border-color 0.16s, color 0.16s;
-    }
-
-    .footer a:hover {
-      color: #FFFFFF;
-      border-color: #FFFFFF;
-    }
-
-    /* Плавное появление контента после кнопки */
-    .portfolio-content {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .portfolio-content.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 1rem;
-      }
-    }
+    html{scroll-behavior:smooth}
+    body{background:radial-gradient(circle at 10% 20%,#72676F,#2a1f1d);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;min-height:100vh;color:#F0EDEE;padding:1.5rem;margin:0;-ms-overflow-style:none;scrollbar-width:none}
+    body::-webkit-scrollbar{width:0;background:transparent}
+    .page-container{max-width:1100px;margin:0 auto;padding-top:2.5rem}
+    .burned-strong{font-family:"Marck Script",cursive;color:#fffaf0;text-shadow:0 0 4px #fff8dc,0 0 10px #ffe4b5,0 0 18px #ffb347,0 0 28px #ff8c00,0 0 38px #ff4500,0 0 48px #c0392b}
+    .burned-soft{font-family:"Marck Script",cursive;color:#fff3dd;text-shadow:0 0 3px #fff8dc,0 0 8px #ffb347,0 0 16px #ff8c00,0 0 24px #c0392b}
+    .handwritten-main{font-family:"Marck Script",cursive;font-size:2.6rem;font-weight:400;letter-spacing:.06em;text-align:center;margin-bottom:.6rem}
+    .handwritten-sub{font-family:"Marck Script",cursive;font-size:1.4rem;font-weight:400;letter-spacing:.05em;text-align:center;color:#F2EAE9;opacity:.95;margin-bottom:2rem;text-shadow:0 0 4px rgba(255,248,220,.8),0 0 12px rgba(255,140,0,.5)}
+    .section-title-handwritten{font-family:"Marck Script",cursive;font-size:1.9rem;font-weight:400;letter-spacing:.04em;margin-bottom:.8rem}
+    .section-subtitle{font-size:.9rem;color:#F0EDEE;margin-bottom:1.1rem;opacity:.9}
+    .intro-screen{max-width:780px;margin:0 auto 3rem}
+    .terminal-neumo{position:relative;border-radius:2.2rem;background:#6b5f67;box-shadow:20px 20px 46px #4e4348,-18px -18px 40px #8e838c;padding:1.7rem 1.5rem 1.4rem;color:#f4efee;overflow:hidden}
+    .terminal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;font-size:.78rem;color:#e2dadb;opacity:.9}
+    .terminal-dots{display:flex;gap:.35rem}
+    .terminal-dot{width:8px;height:8px;border-radius:999px;background:rgba(42,31,29,.4);box-shadow:1px 1px 2px rgba(0,0,0,.4),-1px -1px 2px rgba(255,255,255,.15)}
+    .terminal-body{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.9rem;line-height:1.5;background:radial-gradient(circle at 0% 0%,rgba(20,10,10,.8),rgba(88,78,84,.45));border-radius:1.5rem;padding:1.1rem 1.1rem 1rem;box-shadow:inset 2px 2px 6px rgba(0,0,0,.5),inset -2px -2px 4px rgba(255,255,255,.08);min-height:90px;color:#fdfaf5}
+    .terminal-cursor{display:inline-block;width:9px;height:1.1em;background-color:#F4E4C5;vertical-align:middle;margin-left:2px;animation:blink 1s step-end infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .terminal-fire{color:#ffe9c7;text-shadow:0 0 2px #fff8dc,0 0 6px #ffe4b5,0 0 12px #ffb347,0 0 20px #ff8c00,0 0 30px #ff4500,0 0 40px #b22222}
+    .terminal-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;gap:1rem;flex-wrap:wrap}
+    .audio-player{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .75rem;border-radius:999px;background:rgba(42,31,29,.7);border:1px solid rgba(183,157,155,.7);box-shadow:2px 2px 4px rgba(0,0,0,.5),-2px -2px 4px rgba(255,255,255,.12);font-size:.8rem}
+    .audio-button,.audio-skip{width:26px;height:26px;border-radius:999px;border:none;background:#E2DADB;color:#2a1f1d;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:2px 2px 4px rgba(0,0,0,.4),-2px -2px 4px rgba(255,255,255,.4);font-size:13px}
+    .audio-button:active,.audio-skip:active{transform:translateY(1px);box-shadow:1px 1px 2px rgba(0,0,0,.45),-1px -1px 2px rgba(255,255,255,.2)}
+    .audio-track-title{opacity:.9;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    @media(max-width:480px){.audio-track-title{max-width:140px}}
+    .audio-seek{width:100px;-webkit-appearance:none;appearance:none;height:4px;border-radius:999px;background:rgba(240,237,237,.4);outline:none;cursor:pointer}
+    .audio-seek::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:10px;height:10px;border-radius:50%;background:#f2eae9;box-shadow:0 0 4px rgba(0,0,0,.5),0 0 6px rgba(255,248,220,.7)}
+    .audio-seek::-moz-range-thumb{width:10px;height:10px;border-radius:50%;border:none;background:#f2eae9;box-shadow:0 0 4px rgba(0,0,0,.5),0 0 6px rgba(255,248,220,.7)}
+    .show-portfolio-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;border-radius:999px;border:1px solid rgba(242,234,233,.8);background:rgba(242,234,233,.1);color:#F2EAE9;font-size:.82rem;cursor:pointer;transition:background .18s,transform .12s,box-shadow .18s;box-shadow:0 12px 20px -14px rgba(0,0,0,.8)}
+    .show-portfolio-btn:hover{background:rgba(242,234,233,.22);transform:translateY(-1px);box-shadow:0 14px 24px -14px rgba(0,0,0,.85)}
+    .tag-cloud-section{margin:0 auto 3.2rem}
+    .tag-cloud-title{font-family:"Marck Script",cursive;font-size:1.8rem;font-weight:400;letter-spacing:.04em;text-align:center;margin-bottom:1rem;color:#fffaf0;text-shadow:0 0 3px #fff8dc,0 0 10px #ffb347,0 0 20px #ff8c00,0 0 30px #ff4500,0 0 40px #b22222}
+    .tag-cloud{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem .55rem;padding:1rem .3rem}
+    .tag-pill{display:inline-flex;align-items:center;justify-content:center;padding:.35rem .9rem;border-radius:999px;font-size:.8rem;color:#F8F3F2;text-decoration:none;background:rgba(114,103,111,.55);border:1px solid rgba(226,218,219,.7);backdrop-filter:blur(12px);box-shadow:0 10px 18px -12px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.05);transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease,opacity .18s ease;position:relative;overflow:hidden}
+    .tag-pill::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;box-shadow:0 0 14px rgba(242,234,233,.55),0 0 28px rgba(242,234,233,.35);transition:opacity .2s ease}
+    .tag-pill:hover::after{opacity:1}
+    .tag-pill:hover{transform:translateY(-2px) scale(1.03);background:rgba(139,129,137,.9);border-color:#F2EAE9;box-shadow:0 16px 24px -14px rgba(0,0,0,.9);opacity:1}
+    .tag-pill[data-size=lg]{font-size:.9rem;padding:.45rem 1.1rem}
+    .tag-pill[data-size=sm]{font-size:.75rem;opacity:.9}
+    @media(max-width:640px){.tag-cloud{justify-content:flex-start;padding-inline:0}.tag-pill{font-size:.8rem;padding:.35rem .8rem}.tag-pill[data-size=lg]{font-size:.85rem}.tag-cloud-title{font-size:1.6rem}}
+    .section-card{background:radial-gradient(circle at 0% 0%,rgba(129,119,127,.85),rgba(90,78,76,.75));backdrop-filter:blur(16px);border-radius:2.2rem;border:1px solid rgba(176,168,167,.7);padding:2.1rem 1.8rem;margin-bottom:2.6rem;box-shadow:0 32px 56px -24px rgba(0,0,0,.75);transition:all .22s}
+    .section-card:hover{transform:translateY(-6px);border-color:#E2DADB;box-shadow:0 40px 70px -26px rgba(0,0,0,.85)}
+    .stack-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:.9rem;font-size:.92rem}
+    @media(min-width:768px){.stack-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+    .tech-item-label{display:inline-block;min-width:120px;color:#E2DADB;opacity:.9}
+    .tech-item{color:#F8F3F2}
+    .projects-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1.1rem;font-size:.9rem;margin-top:.4rem}
+    @media(min-width:900px){.projects-grid.two-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+    .project-card{background:rgba(114,103,111,.96);backdrop-filter:blur(12px);border-radius:1.7rem;border-left:4px solid #B79D9B;border-right:1px solid rgba(176,168,167,.7);border-top:1px solid rgba(176,168,167,.7);border-bottom:1px solid rgba(176,168,167,.7);padding:1.1rem 1.1rem .95rem;transition:.2s;text-decoration:none;color:inherit;box-shadow:0 22px 34px -18px rgba(0,0,0,.8)}
+    .project-card:hover{background:rgba(139,129,137,.99);transform:translateY(-4px);box-shadow:0 30px 44px -20px rgba(0,0,0,.9)}
+    .project-title{font-weight:600;margin-bottom:.2rem}
+    .project-meta{font-size:.8rem;color:#E2DADB;margin-bottom:.4rem;opacity:.9}
+    .project-text{font-size:.9rem;color:#F8F3F2}
+    .small{font-size:.88rem}
+    .footer{margin-top:3rem;text-align:center;color:#F0EDEE}
+    .footer-handwritten-main{font-family:"Marck Script",cursive;font-size:1.5rem;margin-bottom:.5rem;color:#fffaf0;text-shadow:0 0 3px #fff8dc,0 0 10px #ffb347,0 0 20px #ff8c00,0 0 30px #ff4500,0 0 40px #b22222}
+    .footer-handwritten-sub{font-family:"Marck Script",cursive;font-size:1.1rem;opacity:.9;margin-bottom:.6rem}
+    .footer-links{font-size:.9rem;margin-top:.4rem}
+    .footer a{color:#F2EAE9;text-decoration:none;border-bottom:1px solid rgba(226,218,219,.35);padding-bottom:1px;transition:border-color .16s,color .16s}
+    .footer a:hover{color:#fff;border-color:#fff}
+    .portfolio-content{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+    .portfolio-content.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+    @media(max-width:768px){body{padding:1rem}}
   </style>
 </head>
 <body>
   <div class="page-container" id="top">
-
-    <!-- Терминал + плеер -->
     <section class="intro-screen">
       <div class="terminal-neumo">
         <div class="terminal-header">
           <div class="terminal-dots">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
           </div>
-          <div>hr@devops‑portfolio</div>
+          <div>hr@devops-portfolio</div>
         </div>
-        <div class="terminal-body" id="terminalBody">
-          <!-- текст напечатается скриптом -->
-        </div>
-
+        <div class="terminal-body" id="terminalBody"></div>
         <div class="terminal-footer">
           <div class="audio-player">
             <button class="audio-skip" id="prevTrack" aria-label="Previous track">⏮</button>
             <button class="audio-button" id="audioToggle" aria-label="Play / Pause">▶</button>
             <button class="audio-skip" id="nextTrack" aria-label="Next track">⏭</button>
-
-            <span class="audio-track-title" id="audioTitle" title="track1.mp3">track1.mp3</span>
-
-            <input
-              type="range"
-              id="audioVolume"
-              class="audio-volume"
-              min="0"
-              max="1"
-              step="0.01"
-              value="0.8"
-              aria-label="Громкость"
-            >
-
+            <span class="audio-track-title" id="audioTitle" title="Sleipnirs_Ride.mp3">Sleipnirs_Ride.mp3</span>
+            <input type="range" id="audioSeek" class="audio-seek" min="0" max="100" value="0" aria-label="Перемотка">
             <audio id="introAudio">
-              <source src="audio/track1.mp3" type="audio/mpeg">
+              <source src="audio/Sleipnirs_Ride.mp3" type="audio/mpeg">
             </audio>
           </div>
-
           <button class="show-portfolio-btn" id="showPortfolioBtn">
-            <span>hr@portfolio:~$</span>
-            <span>show_portfolio</span>
+            <span>hr@portfolio:~$</span><span>show_portfolio</span>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Шапка -->
     <header class="mb-8 portfolio-content" id="headerContent">
       <div class="handwritten-main burned-strong">Ильяс</div>
       <div class="handwritten-sub">DevOps / системный аналитик</div>
     </header>
 
     <div class="portfolio-content" id="portfolioContent">
-
-      <!-- Облако тегов (соответствует секциям и стеку) -->
       <section class="tag-cloud-section">
         <div class="tag-cloud-title burned-strong">Направления и стек</div>
         <div class="tag-cloud" id="tagCloud">
-          <!-- Глобальные группы == секциям -->
           <a href="#devops" class="tag-pill" data-size="lg">DevOps · CI/CD</a>
           <a href="#elk" class="tag-pill" data-size="lg">ELK / наблюдаемость</a>
           <a href="#web-tools" class="tag-pill" data-size="lg">Веб‑приложения и инструменты</a>
           <a href="#gamedev" class="tag-pill" data-size="lg">Game Development</a>
           <a href="#ai-analytics" class="tag-pill" data-size="lg">AI и аналитика</a>
-
-          <!-- Технологии из стека и проектов -->
           <span class="tag-pill" data-size="sm">Kubernetes</span>
           <span class="tag-pill" data-size="sm">Docker</span>
           <span class="tag-pill" data-size="sm">GitLab CI</span>
@@ -722,56 +178,34 @@
         </div>
       </section>
 
-      <!-- О себе -->
       <section class="section-card" id="about">
         <h2 class="section-title-handwritten burned-soft">О себе</h2>
-        <p class="section-subtitle">
-          DevOps‑инженер и системный аналитик. Настраиваю CI/CD, Kubernetes, логирование и мониторинг вокруг приложений. Работаю с Python, Swift, Java, Bash.
-        </p>
-
+        <p class="section-subtitle">DevOps‑инженер и системный аналитик. Настраиваю CI/CD, Kubernetes, логирование и мониторинг вокруг приложений. Работаю с Python, Swift, Java, Bash.</p>
         <div class="stack-grid">
-          <div class="tech-item">
-            <span class="tech-item-label">Инфраструктура</span>
-            Kubernetes, Docker, Nginx, Terraform, Ansible
-          </div>
-          <div class="tech-item">
-            <span class="tech-item-label">Логи и метрики</span>
-            Elasticsearch, Logstash, Kibana, Filebeat, Prometheus, Grafana
-          </div>
-          <div class="tech-item">
-            <span class="tech-item-label">CI/CD</span>
-            GitLab CI, GitHub Actions
-          </div>
-          <div class="tech-item">
-            <span class="tech-item-label">Языки</span>
-            Python, Swift, Java, C, Bash
-          </div>
-          <div class="tech-item">
-            <span class="tech-item-label">Базы и веб</span>
-            PostgreSQL, HTML, CSS, JavaScript
-          </div>
+          <div class="tech-item"><span class="tech-item-label">Инфраструктура</span>Kubernetes, Docker, Nginx, Terraform, Ansible</div>
+          <div class="tech-item"><span class="tech-item-label">Логи и метрики</span>Elasticsearch, Logstash, Kibana, Filebeat, Prometheus, Grafana</div>
+          <div class="tech-item"><span class="tech-item-label">CI/CD</span>GitLab CI, GitHub Actions</div>
+          <div class="tech-item"><span class="tech-item-label">Языки</span>Python, Swift, Java, C, Bash</div>
+          <div class="tech-item"><span class="tech-item-label">Базы и веб</span>PostgreSQL, HTML, CSS, JavaScript</div>
         </div>
       </section>
 
-      <!-- Опыт -->
       <section class="section-card" id="experience">
         <h2 class="section-title-handwritten burned-soft">Опыт</h2>
-
         <div class="mb-4 small">
           <div class="font-semibold">DevOps / системный аналитик · Freelance</div>
           <div style="color:#E2DADB;">2021 – н.в.</div>
-          <ul class="small" style="margin-top:0.25rem; padding-left:1.1rem;">
+          <ul class="small" style="margin-top:0.25rem;padding-left:1.1rem;">
             <li>CI/CD для Java: деплой 4 часа → 15 минут.</li>
             <li>Миграция на Kubernetes, GitOps, Helm.</li>
             <li>Снижение облачных расходов примерно на 20%.</li>
             <li>Внедрение Vault и ELK для секретов и логов.</li>
           </ul>
         </div>
-
         <div class="small">
           <div class="font-semibold">iOS и Python разработчик · Фриланс</div>
           <div style="color:#E2DADB;">2024 – н.в.</div>
-          <ul class="small" style="margin-top:0.25rem; padding-left:1.1rem;">
+          <ul class="small" style="margin-top:0.25rem;padding-left:1.1rem;">
             <li>Swift (MVVM, SwiftUI, CoreData), Python.</li>
             <li>HR‑автоматизация: оценка, рассылки, поздравления.</li>
             <li>Промпт‑инжиниринг и игровые прототипы.</li>
@@ -779,457 +213,290 @@
         </div>
       </section>
 
-      <!-- ELK / наблюдаемость -->
       <section class="section-card" id="elk">
         <h2 class="section-title-handwritten burned-soft">ELK и наблюдаемость</h2>
-        <p class="section-subtitle">
-          Кластеры ELK, потоки логов через Filebeat и Logstash, визуализация и поиск инцидентов в Kibana.
-        </p>
-
+        <p class="section-subtitle">Кластеры ELK, потоки логов через Filebeat и Logstash, визуализация и поиск инцидентов в Kibana.</p>
         <div class="small">
-          <p>
-            Настраивал отказоустойчивые кластеры Elasticsearch c несколькими ролями узлов, Logstash‑пайплайны для нормализации логов и дашборды в Kibana для разных команд.
-          </p>
+          <p>Настраивал отказоустойчивые кластеры Elasticsearch c несколькими ролями узлов, Logstash‑пайплайны для нормализации логов и дашборды в Kibana для разных команд.</p>
         </div>
       </section>
 
-      <!-- DevOps & Автоматизация -->
       <section class="section-card" id="devops" data-section="DevOps">
         <h2 class="section-title-handwritten burned-soft">DevOps и автоматизация</h2>
-        <p class="section-subtitle">
-          CI/CD, инфраструктура как код, провизия узлов, мониторинг и операционка вокруг сервисов.
-        </p>
-
+        <p class="section-subtitle">CI/CD, инфраструктура как код, провизия узлов, мониторинг и операционка вокруг сервисов.</p>
         <div class="projects-grid two-cols">
           <a href="https://github.com/onlymyrep/DevOps_ci_cd" target="_blank" class="project-card">
             <div class="project-title">CI/CD для C‑проекта</div>
             <div class="project-meta">GitLab CI · Docker</div>
-            <div class="project-text">
-              Конвейер: сборка, тесты, статический анализ и артефакты. Переход от ручных сборок к повторяемому пайплайну.
-            </div>
+            <div class="project-text">Конвейер: сборка, тесты, статический анализ и артефакты. Переход от ручных сборок к повторяемому пайплайну.</div>
           </a>
-
           <a href="https://github.com/onlymyrep/DevOps_automation_tools/tree/develop" target="_blank" class="project-card">
             <div class="project-title">Провизия узлов</div>
             <div class="project-meta">Ansible · Terraform</div>
-            <div class="project-text">
-              Плейбуки и модули для развёртывания окружений. Автоматизация настройки серверов и сервисов.
-            </div>
+            <div class="project-text">Плейбуки и модули для развёртывания окружений. Автоматизация настройки серверов и сервисов.</div>
           </a>
-
           <a href="https://github.com/onlymyrep/DevOps_kubernetes" target="_blank" class="project-card">
             <div class="project-title">Basic Kubernetes</div>
             <div class="project-meta">K8s · Helm · GitOps</div>
-            <div class="project-text">
-              Манифесты, чарт, базовый кластер и деплой. Практика работы с Kubernetes и GitOps‑подходом.
-            </div>
+            <div class="project-text">Манифесты, чарт, базовый кластер и деплой. Практика работы с Kubernetes и GitOps‑подходом.</div>
           </a>
-
           <a href="https://github.com/onlymyrep/DevOps_monitoring" target="_blank" class="project-card">
             <div class="project-title">Мониторинг сервисов</div>
             <div class="project-meta">Prometheus · Grafana · ELK</div>
-            <div class="project-text">
-              Метрики, алертинг и централизованные логи. Связка Prometheus/Grafana и ELK.
-            </div>
+            <div class="project-text">Метрики, алертинг и централизованные логи. Связка Prometheus/Grafana и ELK.</div>
           </a>
-
           <a href="https://github.com/onlymyrep/botmax" target="_blank" class="project-card">
             <div class="project-title">Бот для MAX</div>
             <div class="project-meta">Python · API</div>
-            <div class="project-text">
-              Чат‑бот для мессенджера: команды, уведомления, интеграции. Автоматизация типовых запросов.
-            </div>
+            <div class="project-text">Чат‑бот для мессенджера: команды, уведомления, интеграции. Автоматизация типовых запросов.</div>
           </a>
         </div>
       </section>
 
-      <!-- Веб‑приложения и инструменты -->
       <section class="section-card" id="web-tools" data-section="Web tools">
         <h2 class="section-title-handwritten burned-soft">Веб‑приложения и инструменты</h2>
-        <p class="section-subtitle">
-          Сервисы для HR, визуализации графов, генерации расписаний и работы с лабиринтами.
-        </p>
-
+        <p class="section-subtitle">Сервисы для HR, визуализации графов, генерации расписаний и работы с лабиринтами.</p>
         <div class="projects-grid two-cols">
           <a href="https://amusing-nexus-work-flow.base44.app" target="_blank" class="project-card">
             <div class="project-title">HR Automation Platform</div>
             <div class="project-meta">Django · PostgreSQL</div>
-            <div class="project-text">
-              Оценка кандидатов, поздравления, рассылки и автоматизация HR‑процессов в одном веб‑приложении.
-            </div>
+            <div class="project-text">Оценка кандидатов, поздравления, рассылки и автоматизация HR‑процессов в одном веб‑приложении.</div>
           </a>
-
           <a href="https://navigator-c.onrender.com/" target="_blank" class="project-card">
             <div class="project-title">Graph Navigator</div>
             <div class="project-meta">C · Flask · D3.js</div>
-            <div class="project-text">
-              Визуализатор графов: загрузка матрицы смежности, алгоритмы BFS, DFS, Дейкстра в веб‑интерфейсе.
-            </div>
+            <div class="project-text">Визуализатор графов: загрузка матрицы смежности, алгоритмы BFS, DFS, Дейкстра в веб‑интерфейсе.</div>
           </a>
-
           <a href="https://maze-c.onrender.com/" target="_blank" class="project-card">
             <div class="project-title">Maze Generator</div>
             <div class="project-meta">C · Flask · Q‑learning</div>
-            <div class="project-text">
-              Генератор лабиринтов и пещер (Эллер, клеточные автоматы) и обучение агента на Q‑learning.
-            </div>
+            <div class="project-text">Генератор лабиринтов и пещер и обучение агента на Q‑learning.</div>
           </a>
-
           <a href="https://onlymyrep.github.io/raspisanie/" target="_blank" class="project-card">
             <div class="project-title">Генератор расписания</div>
             <div class="project-meta">JavaScript · HTML</div>
-            <div class="project-text">
-              Конвертация таблицы в готовое расписание с отправкой по почте. Минимум ручной рутины.
-            </div>
+            <div class="project-text">Конвертация таблицы в готовое расписание с отправкой по почте.</div>
           </a>
         </div>
       </section>
 
-      <!-- Game Development -->
       <section class="section-card" id="gamedev" data-section="GameDev">
         <h2 class="section-title-handwritten burned-soft">Game Development</h2>
-        <p class="section-subtitle">
-          Игровые прототипы и демо на Unity, Java и Swift с упором на механику и сетевое взаимодействие.
-        </p>
-
+        <p class="section-subtitle">Игровые прототипы и демо на Unity, Java и Swift с упором на механику и сетевое взаимодействие.</p>
         <div class="projects-grid two-cols">
           <a href="https://drive.google.com/file/d/1pS3PCluw7ep2L31QRqKOmG9k9Mza28cp/view" target="_blank" class="project-card">
             <div class="project-title">Agar.io Clone (Unity)</div>
             <div class="project-meta">Unity · промпт‑инжиниринг</div>
-            <div class="project-text">
-              Клон Agar.io, часть кода и логики сгенерирована через промпт‑инжиниринг и доработана руками.
-            </div>
+            <div class="project-text">Клон Agar.io, часть кода и логики сгенерирована через промпт‑инжиниринг и доработана руками.</div>
           </a>
-
           <a href="https://drive.google.com/file/d/1AZmJNQ_mSGkNXcZlci_dNae1eAjDYJ4n/view" target="_blank" class="project-card">
             <div class="project-title">Крестики‑нолики (Java)</div>
             <div class="project-meta">Java · backend + UI</div>
-            <div class="project-text">
-              Игра с серверной логикой на Java и простым интерфейсом, тренировка сетевого взаимодействия.
-            </div>
+            <div class="project-text">Игра с серверной логикой на Java и простым интерфейсом.</div>
           </a>
-
           <a href="https://ap1-sw-t03.onrender.com/" target="_blank" class="project-card">
             <div class="project-title">Крестики‑нолики (Swift)</div>
             <div class="project-meta">Swift · Vapor</div>
-            <div class="project-text">
-              Веб‑игра на Swift (Vapor) с серверным контролем и веб‑интерфейсом.
-            </div>
+            <div class="project-text">Веб‑игра на Swift (Vapor) с серверным контролем и веб‑интерфейсом.</div>
           </a>
-
           <a href="https://onlymyrep.github.io/my_game_for_school_21/" target="_blank" class="project-card">
             <div class="project-title">Эмодзи‑пазл</div>
             <div class="project-meta">JavaScript · таймер</div>
-            <div class="project-text">
-              Игра на реакцию: собрать одинаковый ряд эмодзи на время.
-            </div>
+            <div class="project-text">Игра на реакцию: собрать одинаковый ряд эмодзи на время.</div>
           </a>
-
           <a href="https://onlymyrep.github.io/8/" target="_blank" class="project-card">
             <div class="project-title">Игра «8»</div>
             <div class="project-meta">JavaScript</div>
-            <div class="project-text">
-              Логика как в крестиках‑ноликах: собрать три в ряд на поле 3×3.
-            </div>
+            <div class="project-text">Логика как в крестиках‑ноликах: собрать три в ряд на поле 3×3.</div>
           </a>
         </div>
       </section>
 
-      <!-- AI и аналитика -->
       <section class="section-card" id="ai-analytics" data-section="AI & Analytics">
         <h2 class="section-title-handwritten burned-soft">AI и аналитика</h2>
-        <p class="section-subtitle">
-          Инструменты для аналитики кандидатов, оценки промпт‑инжиниринга и продуктовые исследования.
-        </p>
-
+        <p class="section-subtitle">Инструменты для аналитики кандидатов, оценки промпт‑инжиниринга и продуктовые исследования.</p>
         <div class="projects-grid two-cols">
           <a href="https://onlymyrep.github.io/presentation2/" target="_blank" class="project-card">
             <div class="project-title">AI‑заключения о кандидатах</div>
             <div class="project-meta">LLM · NLP</div>
-            <div class="project-text">
-              Автоматические выводы по резюме, тестам и видео. Поддержка HR‑решений, единый формат отчётов.
-            </div>
+            <div class="project-text">Автоматические выводы по резюме, тестам и видео. Поддержка HR‑решений, единый формат отчётов.</div>
           </a>
-
           <a href="https://onlymyrep.github.io/presentation/" target="_blank" class="project-card">
             <div class="project-title">Оценка промпт‑инжиниринга</div>
             <div class="project-meta">React · Prompt Eng.</div>
-            <div class="project-text">
-              Инструмент для автооценки навыков написания промптов и демонстрации подходов к LLM.
-            </div>
+            <div class="project-text">Инструмент для автооценки навыков написания промптов и демонстрации подходов к LLM.</div>
           </a>
-
           <a href="https://onlymyrep.github.io/pjm6/" target="_blank" class="project-card">
             <div class="project-title">Анализ продукта: Pulse Казани</div>
             <div class="project-meta">UX Research · стратегия</div>
-            <div class="project-text">
-              Аналитика приложения для туристов и жителей, стратегия развития и сценарии использования.
-            </div>
+            <div class="project-text">Аналитика приложения для туристов и жителей, стратегия развития и сценарии использования.</div>
           </a>
-
           <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" target="_blank" class="project-card">
             <div class="project-title">Kazan Pulse (агрегатор событий)</div>
             <div class="project-meta">React Native · Firebase</div>
-            <div class="project-text">
-              Афиша Казани, маршруты, реклама, Google‑авторизация, чаты. Несколько версий приложения.
-            </div>
+            <div class="project-text">Афиша Казани, маршруты, реклама, Google‑авторизация и чаты.</div>
           </a>
         </div>
       </section>
 
-      <!-- Контакты -->
       <footer class="footer">
-        <div class="footer-handwritten-main">
-          Связаться со мной
-        </div>
-        <div class="footer-handwritten-sub">
-          Казань · DevOps / системный аналитик · открыт к интересным задачам
-        </div>
+        <div class="footer-handwritten-main">Связаться со мной</div>
+        <div class="footer-handwritten-sub">Казань · DevOps / системный аналитик · открыт к интересным задачам</div>
         <div class="footer-links">
-          GitHub:
-          <a href="https://github.com/onlymyrep" target="_blank" rel="noopener">github.com/onlymyrep</a>
-          · Telegram:
-          <a href="https://t.me/bartonjo" target="_blank" rel="noopener">@bartonjo</a>
-          · Email:
-          <a href="mailto:mukashevilias@gmail.com">mukashevilias@gmail.com</a>
+          GitHub: <a href="https://github.com/onlymyrep" target="_blank" rel="noopener">github.com/onlymyrep</a>
+          · Telegram: <a href="https://t.me/bartonjo" target="_blank" rel="noopener">@bartonjo</a>
+          · Email: <a href="mailto:mukashevilias@gmail.com">mukashevilias@gmail.com</a>
         </div>
       </footer>
     </div>
   </div>
 
   <script>
-    // Скролл наверх и запуск терминала
-    window.addEventListener("load", () => {
-      window.scrollTo(0, 0);
-      startTyping();
-    });
+    window.addEventListener("load",()=>{window.scrollTo(0,0);startTyping()});
 
-    // Скролл с оффсетом для имени[web:151][web:155]
-    function scrollToWithOffset(target, offset) {
-      const rect = target.getBoundingClientRect();
-      const absoluteTop = rect.top + window.pageYOffset;
-      window.scrollTo({
-        top: absoluteTop - offset,
-        behavior: "smooth"
-      });
-    }
+    function scrollToWithOffset(target,offset){const r=target.getBoundingClientRect();const t=r.top+window.pageYOffset;window.scrollTo({top:t-offset,behavior:"smooth"})}
 
-    const showBtn = document.getElementById("showPortfolioBtn");
-    const portfolioContent = document.getElementById("portfolioContent");
-    const headerContent = document.getElementById("headerContent");
+    const showBtn=document.getElementById("showPortfolioBtn");
+    const portfolioContent=document.getElementById("portfolioContent");
+    const headerContent=document.getElementById("headerContent");
 
-    if (showBtn) {
-      showBtn.addEventListener("click", () => {
-        portfolioContent.classList.add("visible");
-        headerContent.classList.add("visible");
-        scrollToWithOffset(headerContent, 60);
-      });
-    }
+    if(showBtn){showBtn.addEventListener("click",()=>{portfolioContent.classList.add("visible");headerContent.classList.add("visible");scrollToWithOffset(headerContent,60)})}
 
-    // Плеер
-    const audio = document.getElementById("introAudio");
-    const audioToggle = document.getElementById("audioToggle");
-    const audioTitle = document.getElementById("audioTitle");
-    const prevTrackBtn = document.getElementById("prevTrack");
-    const nextTrackBtn = document.getElementById("nextTrack");
-    const audioVolume = document.getElementById("audioVolume");
+    const audio=document.getElementById("introAudio");
+    const audioToggle=document.getElementById("audioToggle");
+    const audioTitle=document.getElementById("audioTitle");
+    const prevTrackBtn=document.getElementById("prevTrack");
+    const nextTrackBtn=document.getElementById("nextTrack");
+    const audioSeek=document.getElementById("audioSeek");
 
-    const tracks = [
-      { src: "audio/Sleipnirs_Ride.mp3", title: "Sleipnirs_Ride.mp3" },
-      { src: "audio/Calling_Me_Home.mp3", title: "Calling_Me_Home.mp3" },
-      { src: "audio/Kiss_the_Frost.mp3", title: "Kiss_the_Frost.mp3" },
-      { src: "audio/Frost_Veil.mp3", title: "Frost_Veil.mp3" },
-      { src: "audio/iron ragnar - Ron Calling.mp3", title: "iron ragnar - Ron Calling.mp3" },
-      { src: "audio/Iron_Storm.mp3", title: "Iron_Storm.mp3" },
-      { src: "audio/North_Wind.mp3", title: "North_Wind.mp3" },
-      { src: "audio/Ragal_Ironbull___VALHALLA_CALLING.mp3", title: "Ragal_Ironbull___VALHALLA_CALLING.mp3" },
-      { src: "audio/We_Ride.mp3", title: "We_Ride.mp3" },
-      { src: "audio/Frost_and_Fire.mp3", title: "Frost_and_Fire.mp3" },
-      { src: "audio/Valhalla_Glow.mp3", title: "Valhalla_Glow.mp3" }
+    const tracks=[
+      {src:"audio/Sleipnirs_Ride.mp3",title:"Sleipnirs_Ride.mp3"},
+      {src:"audio/Calling_Me_Home.mp3",title:"Calling_Me_Home.mp3"},
+      {src:"audio/Kiss_the_Frost.mp3",title:"Kiss_the_Frost.mp3"},
+      {src:"audio/Frost_Veil.mp3",title:"Frost_Veil.mp3"},
+      {src:"audio/iron ragnar - Ron Calling.mp3",title:"iron ragnar - Ron Calling.mp3"},
+      {src:"audio/Iron_Storm.mp3",title:"Iron_Storm.mp3"},
+      {src:"audio/North_Wind.mp3",title:"North_Wind.mp3"},
+      {src:"audio/Ragal_Ironbull___VALHALLA_CALLING.mp3",title:"Ragal_Ironbull___VALHALLA_CALLING.mp3"},
+      {src:"audio/We_Ride.mp3",title:"We_Ride.mp3"},
+      {src:"audio/Frost_and_Fire.mp3",title:"Frost_and_Fire.mp3"},
+      {src:"audio/Valhalla_Glow.mp3",title:"Valhalla_Glow.mp3"}
     ];
-    let currentTrackIndex = 0;
+    let currentTrackIndex=0;
+    let isSeeking=false;
 
-    function updateToggleIcon() {
-      if (!audioToggle || !audio) return;
-      audioToggle.textContent = audio.paused ? "▶" : "❚❚";
-    }
+    function updateToggleIcon(){if(!audioToggle||!audio)return;audioToggle.textContent=audio.paused?"▶":"❚❚"}
 
-    function loadTrack(index, autoplay = false) {
-      if (!audio) return;
-
-      currentTrackIndex = (index + tracks.length) % tracks.length;
-      const track = tracks[currentTrackIndex];
-
-      audio.src = track.src;
-      if (audioTitle) {
-        audioTitle.textContent = track.title;
-        audioTitle.title = track.title;
-      }
-
-      if (autoplay) {
-        audio
-          .play()
-          .then(updateToggleIcon)
-          .catch((err) => {
-            console.error("Audio play blocked or failed:", err);
-            updateToggleIcon();
-          });
-      } else {
-        audio.pause();
-        updateToggleIcon();
+    function loadTrack(index,autoplay=false){
+      if(!audio)return;
+      currentTrackIndex=(index+tracks.length)%tracks.length;
+      const track=tracks[currentTrackIndex];
+      audio.src=track.src;
+      if(audioTitle){audioTitle.textContent=track.title;audioTitle.title=track.title}
+      if(audioSeek){audioSeek.value=0}
+      if(autoplay){
+        audio.play().then(updateToggleIcon).catch(e=>{console.error("Audio play failed:",e);updateToggleIcon()})
+      }else{
+        audio.pause();updateToggleIcon()
       }
     }
 
-    if (audioToggle && audio) {
-      audioToggle.addEventListener("click", () => {
-        if (audio.paused) {
-          audio
-            .play()
-            .then(updateToggleIcon)
-            .catch((err) => {
-              console.error("Audio play blocked or failed:", err);
-              updateToggleIcon();
-            });
-        } else {
-          audio.pause();
-          updateToggleIcon();
+    if(audioToggle&&audio){
+      audioToggle.addEventListener("click",()=>{
+        if(audio.paused){
+          audio.play().then(updateToggleIcon).catch(e=>{console.error("Audio play failed:",e);updateToggleIcon()})
+        }else{
+          audio.pause();updateToggleIcon()
         }
+      })
+    }
+
+    if(prevTrackBtn){prevTrackBtn.addEventListener("click",()=>loadTrack(currentTrackIndex-1,true))}
+    if(nextTrackBtn){nextTrackBtn.addEventListener("click",()=>loadTrack(currentTrackIndex+1,true))}
+
+    if(audio){
+      audio.addEventListener("ended",()=>loadTrack(currentTrackIndex+1,true));
+      audio.addEventListener("play",updateToggleIcon);
+      audio.addEventListener("pause",updateToggleIcon);
+      audio.addEventListener("timeupdate",()=>{
+        if(!audioSeek||isSeeking||!audio.duration)return;
+        audioSeek.value=(audio.currentTime/audio.duration)*100
       });
+      if(audioSeek){
+        audioSeek.addEventListener("input",()=>{
+          isSeeking=true;
+          if(audio.duration){
+            const pos=parseFloat(audioSeek.value)/100;
+            audio.currentTime=pos*audio.duration
+          }
+        });
+        audioSeek.addEventListener("change",()=>{isSeeking=false})
+      }
     }
 
-    if (prevTrackBtn) {
-      prevTrackBtn.addEventListener("click", () => {
-        loadTrack(currentTrackIndex - 1, true);
-      });
-    }
+    loadTrack(0,false);
 
-    if (nextTrackBtn) {
-      nextTrackBtn.addEventListener("click", () => {
-        loadTrack(currentTrackIndex + 1, true);
-      });
-    }
+    const terminalBody=document.getElementById("terminalBody");
+    const lines=['hr@portfolio:~$ whoami\n','Ильяс — DevOps / системный аналитик.\n'];
+    let lineIndex=0,charIndex=0,typingFinished=false;
 
-    if (audio) {
-      audio.addEventListener("ended", () => {
-        loadTrack(currentTrackIndex + 1, true);
-      });
-      audio.addEventListener("play", updateToggleIcon);
-      audio.addEventListener("pause", updateToggleIcon);
-    }
-
-    // Громкость 0–1 по value range[web:172][web:176][web:179]
-    if (audio && audioVolume) {
-      audio.volume = parseFloat(audioVolume.value);
-      const handleVolume = () => {
-        const v = parseFloat(audioVolume.value);
-        if (!isNaN(v)) {
-          audio.volume = v;
-        }
-      };
-      audioVolume.addEventListener("input", handleVolume);
-      audioVolume.addEventListener("change", handleVolume);
-    }
-
-    // Инициализация первого трека
-    loadTrack(0, false);
-
-    // Терминал: только whoami
-    const terminalBody = document.getElementById("terminalBody");
-    const lines = [
-      'hr@portfolio:~$ whoami\n',
-      'Ильяс — DevOps / системный аналитик.\n'
-    ];
-
-    let lineIndex = 0;
-    let charIndex = 0;
-    let typingFinished = false;
-
-    function typeNextChar() {
-      if (!terminalBody) return;
-
-      if (lineIndex >= lines.length) {
-        if (!typingFinished) {
-          const cursor = document.createElement("span");
-          cursor.className = "terminal-cursor";
+    function typeNextChar(){
+      if(!terminalBody)return;
+      if(lineIndex>=lines.length){
+        if(!typingFinished){
+          const cursor=document.createElement("span");
+          cursor.className="terminal-cursor";
           terminalBody.appendChild(cursor);
-          typingFinished = true;
+          typingFinished=true
         }
-        return;
+        return
       }
-
-      const currentLine = lines[lineIndex];
-      const ch = currentLine.charAt(charIndex);
-
-      if (ch === "\n") {
-        terminalBody.appendChild(document.createElement("br"));
-      } else {
-        const span = document.createElement("span");
-        span.className = "terminal-fire";
-        span.textContent = ch;
-        terminalBody.appendChild(span);
+      const currentLine=lines[lineIndex];
+      const ch=currentLine.charAt(charIndex);
+      if(ch==="\n"){
+        terminalBody.appendChild(document.createElement("br"))
+      }else{
+        const span=document.createElement("span");
+        span.className="terminal-fire";
+        span.textContent=ch;
+        terminalBody.appendChild(span)
       }
-
       charIndex++;
-
-      if (charIndex >= currentLine.length) {
-        charIndex = 0;
-        lineIndex++;
-      }
-
-      const speed = 25;
-      setTimeout(typeNextChar, speed);
+      if(charIndex>=currentLine.length){charIndex=0;lineIndex++}
+      setTimeout(typeNextChar,15)
     }
 
-    function startTyping() {
-      if (!terminalBody) return;
-      lineIndex = 0;
-      charIndex = 0;
-      typingFinished = false;
-      terminalBody.innerHTML = "";
-      typeNextChar();
+    function startTyping(){
+      if(!terminalBody)return;
+      lineIndex=0;charIndex=0;typingFinished=false;
+      terminalBody.textContent="";
+      typeNextChar()
     }
 
-    // Лёгкий рандом тегов
-    const tagPills = document.querySelectorAll(".tag-pill");
-    tagPills.forEach((pill) => {
-      const baseScale = pill.dataset.size === "lg" ? 1.0 : 0.96;
-      const scaleJitter = (Math.random() - 0.5) * 0.08;
-      const finalScale = baseScale + scaleJitter;
-
-      const baseOpacity = pill.dataset.size === "lg" ? 1.0 : 0.9;
-      const opacityJitter = (Math.random() - 0.5) * 0.15;
-      const finalOpacity = Math.max(0.7, Math.min(1, baseOpacity + opacityJitter));
-
-      pill.style.transform = `scale(${finalScale})`;
-      pill.style.opacity = finalOpacity.toString();
+    const tagPills=document.querySelectorAll(".tag-pill");
+    tagPills.forEach(pill=>{
+      const baseScale=pill.dataset.size==="lg"?1.0:0.96;
+      const scaleJitter=(Math.random()-.5)*.06;
+      const finalScale=baseScale+scaleJitter;
+      const baseOpacity=pill.dataset.size==="lg"?1.0:0.9;
+      const opacityJitter=(Math.random()-.5)*.1;
+      const finalOpacity=Math.max(.75,Math.min(1,baseOpacity+opacityJitter));
+      pill.style.transform=`scale(${finalScale})`;
+      pill.style.opacity=String(finalOpacity)
     });
 
-    // Отслеживание кликов по проектам (в консоль)[web:157][web:160]
-    function trackProjectClick(event) {
-      const link = event.currentTarget;
-      const href = link.getAttribute("href") || "";
-      const titleEl = link.querySelector(".project-title");
-      const title = titleEl ? titleEl.textContent.trim() : "(без названия)";
-
-      let sectionName = "(unknown)";
-      const section = link.closest(".section-card");
-      if (section) {
-        sectionName =
-          section.getAttribute("data-section") ||
-          section.id ||
-          sectionName;
-      }
-
-      console.log("[PROJECT_CLICK]", {
-        title,
-        href,
-        section: sectionName
-      });
+    function trackProjectClick(e){
+      const link=e.currentTarget;
+      const href=link.getAttribute("href")||"";
+      const titleEl=link.querySelector(".project-title");
+      const title=titleEl?titleEl.textContent.trim():"(no title)";
+      let sectionName="(unknown)";
+      const section=link.closest(".section-card");
+      if(section){sectionName=section.getAttribute("data-section")||section.id||sectionName}
+      console.log("[PROJECT_CLICK]",{title,href,section:sectionName})
     }
 
-    document
-      .querySelectorAll(".project-card")
-      .forEach((card) => card.addEventListener("click", trackProjectClick));
+    document.querySelectorAll(".project-card").forEach(card=>card.addEventListener("click",trackProjectClick));
   </script>
 </body>
 </html>
